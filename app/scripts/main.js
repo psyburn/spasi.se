@@ -38,27 +38,10 @@ require(['app',
     Backbone,
     MainRouter
   ) {
-  'use strict';
-  // use app here
+    'use strict';
+    // use app here
 
-  console.log(app);
-  window.app = app;
-
-  _.extend(app, {
-    fetchTemplate: function(path) {
-      var fullPath = 'app/templates/' + path + '.html';
-      if (!JST[fullPath]) {
-        $.ajax({
-          url: app.root + fullPath,
-          async: false,
-          success: function(contents) {
-            JST[fullPath] = _.template(contents);
-          }
-        });
-      }
-
-      return JST[fullPath];
-    }
+    console.log(app);
   });
 
   // Localize or create a new JavaScript Template object.
