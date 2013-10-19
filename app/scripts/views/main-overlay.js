@@ -73,19 +73,21 @@ define([
       },
 
       setPlace: function(place) {
+        var position = {};
         if (this.searchList) {
           this.searchList.remove();
         }
         this.$('.header').removeClass('searching');
         if (place) {
           this.$('.search-field').val(place.get('title'));
+          position = place.get('location');
+          this.trigger('map:position:set', position);
         } else {
           this.$('.search').addClass('nearby');
           this.$('.search-field').val('');
           app.collections.places.reset([]);
-          // TODO: Get user place
+          this.trigger('map:position:reset');
         }
-        // TODO: Trigger repositioning
       }
 
     });
