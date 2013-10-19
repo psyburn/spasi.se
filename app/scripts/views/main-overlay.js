@@ -1,9 +1,11 @@
 define([
     'app',
-    'views/location/list'
+    'views/location/list',
+    'views/search/list'
   ], function(
     app,
-    LocationList
+    LocationList,
+    SearchList
   ) {
     'use strict';
 
@@ -13,25 +15,44 @@ define([
 
       events: {
         'click .list-toggle': 'onListToggle',
-        'focus .search-field': 'onSearchFieldFocus'
+        'focus .search-field': 'onSearchFieldFocus',
+        'keyup .search-field': 'onSearchKeyUp'
       },
 
-      render: function() {
+    render: function() {
         this.$el.html(this.template());
         return this;
       },
 
       onListToggle: function() {
         var locationList = new LocationList({
-          collection: new Backbone.Collection({item: 1})
+          collection: app.locations
         });
         app.setActiveView(locationList);
-
+        this.listenTo(locationList, 'click:item', function() {
+          console.log('clicked on location');
+        });
+        locationList.addAll();
       },
 
       onSearchFieldFocus: function() {
         // Show autocomplete
-        console.log('search')
+        var me = this;
+        this.searchList = new SearchList({
+          collection: app.collections.places
+        });
+        this.searchList.on('map:search', function(query) {
+          me.trigger('map:search', query);
+        });
+        this.$('.header').addClass('searching');
+        app.collections.places.trigger('reset');
+        app.setActiveView(this.searchList);
+      },
+
+      onSearchKeyUp: function() {
+        if (this.searchList) {
+          this.searchList.keyPress(this.$('.search-field').val());
+        }
       }
 
     });

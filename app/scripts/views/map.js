@@ -14,7 +14,7 @@ define([
 
     initialize: function() {
       app.loadGmaps(this, this.initMap);
-      this.listenTo(app.locations, 'reset', this.refreshLocations, this);
+      this.listenTo(app.collections.locations, 'reset', this.refreshLocations, this);
     },
 
     render: function() {

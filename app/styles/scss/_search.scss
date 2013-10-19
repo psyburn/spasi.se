@@ -1,0 +1,14 @@
+.search-list {
+  z-index: 3;
+  position: absolute;
+  top: 60px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  width: 100%;
+
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #aaa;
+  }
+}
