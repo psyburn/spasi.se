@@ -36,6 +36,9 @@ define([
         this.overlayView.on('search:focus', function() {
           me.trigger('search:focus');
         });
+        this.overlayView.on('place:set', function() {
+          me.navigate('', false);
+        });
 
         this.mapsView = new MapsView();
         this.$('.map-container').html(this.mapsView.render().el);

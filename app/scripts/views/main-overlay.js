@@ -91,6 +91,7 @@ define([
 
       onLocationClearClick: function() {
         this.setPlace();
+        this.trigger('place:set');
       },
 
       setPlace: function(place) {
