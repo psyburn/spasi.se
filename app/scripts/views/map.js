@@ -131,14 +131,23 @@ define([
     },
 
     displayLocation: function(location) {
+      var me = this;
       var latLng = new google.maps.LatLng(location.get('location').latitude, location.get('location').longitude);
-      this.addMarker(latLng, {
+      var marker = this.addMarker(latLng, {
         url: 'images/marker_' + location.get('category') + '.png',
         size: new google.maps.Size(30, 30),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(30, 30),
         scaledSize: new google.maps.Size(30,30)
       });
+      marker.locationModel = location;
+    },
+
+    onMarkerClick: function(index) {
+      var marker = this.markers[index];
+      if (marker.locationModel) {
+        Backbone.trigger('map:marker:click', marker.locationModel);
+      }
     },
 
     refreshPlaces: function(results) {
@@ -162,12 +171,22 @@ define([
     },
 
     addMarker: function(latLng, icon) {
+      var me = this;
       var marker = new google.maps.Marker({
         position: latLng,
         map: this.map,
         icon: icon
       });
       this.markers.push(marker);
+      this.attachMarkerListener(marker, this.markers.length-1);
+      return marker;
+    },
+
+    attachMarkerListener: function(marker, index) {
+      var me = this;
+      google.maps.event.addListener(marker, 'click', function(event) {
+        me.onMarkerClick.call(me, index);
+      });
     },
 
     showMarker: function(marker) {
