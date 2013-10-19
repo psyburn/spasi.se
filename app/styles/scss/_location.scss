@@ -51,16 +51,16 @@
       .filter-btn {
         @extend .card;
         width: 40px;
+        background-image: url(../../images/filter-icon.png);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center center;
       }
 
       &.searching {
-        margin: auto;
-        background-color: #fff;
-        top: 0;
-        left: 0;
-        right: 0;
         height: 60px;
         padding: 10px;
+        z-index: 4;
 
         .search input {
           background-image: url('../images/search.png');

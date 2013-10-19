@@ -41,12 +41,16 @@ define([
           oldView.cleanup();
         }
         var viewEl = view.render();
-        $('#secondary-content').html(viewEl.el);
+        $('#secondary-content').html(viewEl.el).addClass('visible');
         //scroll to top on every screen change
         setTimeout(function () {
           window.scrollTo(0,1);
         }, 0);
         this.currentView = view;
+      },
+
+      hideActiveView: function() {
+        $('#secondary-content').removeClass('visible');
       },
 
       loadGmaps: function(context, callback) {

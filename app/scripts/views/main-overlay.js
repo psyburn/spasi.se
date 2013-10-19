@@ -53,7 +53,7 @@ define([
       },
 
       onSearchKeyUp: function(e) {
-        var query = this.$('.search-field').val();
+        var query = this.$('.search-field').val().trim();
         this.$('.search')[query.length ? 'removeClass' : 'addClass']('nearby');
         if (this.searchList) {
           if (e.keyCode === 13) {
@@ -75,7 +75,7 @@ define([
       setPlace: function(place) {
         var position = {};
         if (this.searchList) {
-          this.searchList.remove();
+          app.hideActiveView();
         }
         this.$('.header').removeClass('searching');
         if (place) {
