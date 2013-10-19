@@ -1,7 +1,9 @@
 define([
-    'app'
+    'app',
+    'views/location/list'
   ], function(
-    app
+    app,
+    LocationList
   ) {
     'use strict';
 
@@ -15,10 +17,15 @@ define([
 
       render: function() {
         this.$el.html(this.template());
+        this.onListToggle();
         return this;
       },
 
       onListToggle: function() {
+        var locationList = new LocationList({
+          collection: new Backbone.Collection({item: 1})
+        });
+        this.$el.html(locationList.render().el);
 
       }
 
