@@ -7,7 +7,6 @@ define([
     var LocationsCollection = Backbone.Collection.extend({
       _parse_class_name: 'Location',
       model: Model,
-      url: 'mock/data.json',
 
       throttleTimer: 100,
       timer: null,
