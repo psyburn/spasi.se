@@ -16,7 +16,7 @@ define(['app'], function(app) {
     },
 
     initMap: function() {
-      console.log('Init map...');
+      console.log('Init map');
       this.map = new google.maps.Map(this.el, {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         panControl: true,
@@ -36,7 +36,7 @@ define(['app'], function(app) {
     },
 
     showCurrentLocation: function() {
-      this.center = google.maps.LatLng(-20, 20);
+      this.center = new google.maps.LatLng(-20, 20);
       this.map.panTo(this.center);
     },
 
