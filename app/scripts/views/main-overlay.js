@@ -19,17 +19,20 @@ define([
         'keyup .search-field': 'onSearchKeyUp'
       },
 
-      render: function() {
+    render: function() {
         this.$el.html(this.template());
         return this;
       },
 
       onListToggle: function() {
         var locationList = new LocationList({
-          collection: new Backbone.Collection({item: 1})
+          collection: app.locations
         });
         app.setActiveView(locationList);
-
+        this.listenTo(locationList, 'click:item', function() {
+          console.log('clicked on location');
+        });
+        locationList.addAll();
       },
 
       onSearchFieldFocus: function() {

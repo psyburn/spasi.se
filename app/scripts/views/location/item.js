@@ -13,16 +13,19 @@ function(
     template: app.fetchTemplate('location/item'),
 
     events: {
+      'click': 'onLocationClick'
     },
 
     initialize: function() {
     },
 
     render: function() {
-      this.$el.html(this.template());
-      this.updateStatus();
-
+      this.$el.html(this.template(this.model.toJSON()));
       return this;
+    },
+
+    onLocationClick: function() {
+      this.trigger('click', this.model);
     }
 
   });
