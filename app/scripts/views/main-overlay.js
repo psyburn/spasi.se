@@ -21,7 +21,7 @@ define([
         'click .location-clear': 'onLocationClearClick'
       },
 
-    render: function() {
+      render: function() {
         this.$el.html(this.template());
         return this;
       },
@@ -57,6 +57,7 @@ define([
         app.setActiveView(this.searchList);
         this.$('.header').addClass('searching');
         app.collections.places.reset();
+        this.trigger('search:focus');
       },
 
       onSearchKeyUp: function(e) {

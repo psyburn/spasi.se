@@ -33,6 +33,9 @@ define([
         this.overlayView.on('map:position:reset', function(position) {
           me.mapsView.showCurrentLocation();
         });
+        this.overlayView.on('search:focus', function() {
+          me.trigger('search:focus');
+        });
 
         this.mapsView = new MapsView();
         this.$('.map-container').html(this.mapsView.render().el);
