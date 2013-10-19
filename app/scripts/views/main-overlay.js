@@ -1,11 +1,15 @@
 define([
     'app',
     'views/location/list',
-    'views/search/list'
+    'views/search/list',
+    'views/details/preview',
+    'views/details/main'
   ], function(
     app,
     LocationList,
-    SearchList
+    SearchList,
+    DetailsPreview,
+    DetailView
   ) {
     'use strict';
 
@@ -21,20 +25,42 @@ define([
         'click .location-clear': 'onLocationClearClick'
       },
 
-    render: function() {
+      render: function() {
+        this.initDetailsPreviewCard();
         this.$el.html(this.template());
         return this;
       },
 
+      initDetailsPreviewCard: function() {
+        var me = this;
+        this.detailsPreview =  new DetailsPreview();
+        this.listenTo(this.detailsPreview, 'click', function(model) {
+          var view = new DetailView({model: model});
+          app.setActiveView(view);
+        });
+      },
+
+      showPreviewCard: function(model) {
+        console.log(model)
+        this.detailsPreview.render(model);
+      },
+
       onListToggle: function() {
-        var locationList = new LocationList({
-          collection: app.collections.locations
-        });
-        app.setActiveView(locationList);
-        this.listenTo(locationList, 'click:item', function() {
-          console.log('clicked on location');
-        });
-        locationList.addAll();
+        var overlayFooter = this.$('.footer');
+        if (overlayFooter.hasClass('list')) {
+          overlayFooter.removeClass('list');
+          app.hideActiveView();
+        } else {
+          overlayFooter.addClass('list');
+          var locationList = new LocationList({
+            collection: app.collections.locations
+          });
+          app.setActiveView(locationList);
+          this.listenTo(locationList, 'click:item', function() {
+            console.log('clicked on location');
+          });
+          locationList.addAll();
+        }
       },
 
       onSearchFieldFocus: function() {
@@ -50,6 +76,7 @@ define([
         app.setActiveView(this.searchList);
         this.$('.header').addClass('searching');
         app.collections.places.reset();
+        this.trigger('search:focus');
       },
 
       onSearchKeyUp: function(e) {

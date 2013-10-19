@@ -22,11 +22,20 @@ function(
     autocompleteTimeout: 500,
     lastValue: '',
 
+    original: null,
+
+    initialize: function() {
+      Backbone.on('search:reset', this.resetSearch, this);
+    },
+
     render: function() {
       var me = this;
       this.on('click:item', function(model) {
         me.selectPlace(model);
       });
+
+      this.original = $('.search-field').val();
+
       return this;
     },
 
@@ -56,6 +65,11 @@ function(
 
     selectPlace: function(place) {
       this.trigger('place:set', place);
+    },
+
+    resetSearch: function() {
+      $('.search-field').val(this.original).blur();
+      $('.searching').removeClass('searching');
     }
   });
 

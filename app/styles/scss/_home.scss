@@ -59,11 +59,14 @@
 
       &.searching {
         height: 60px;
-        padding: 10px;
         z-index: 4;
 
         .search input {
           background-image: url('../images/search.png');
+        }
+
+        .search div.location-clear {
+          display: block;
         }
 
         .filter-btn {
@@ -86,6 +89,14 @@
         background-size: 60%;
         background-repeat: no-repeat;
         background-position: center center;
+      }
+
+      &.list {
+        position: absolute;
+        z-index: 4;
+        .list-toggle {
+          background-image: url(../../images/map.png);
+        }
       }
     }
   }

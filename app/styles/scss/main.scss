@@ -1,4 +1,11 @@
-html {
+#card-preview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  z-index: 500;
+  background: white;
 }
 
 .card {
@@ -32,7 +39,10 @@ html {
 }
 
 @import "compass";
-@import "location";
+@import "home";
 @import "map";
 @import "search";
 @import "filter";
+@import "details";
+@import "locations";
+
