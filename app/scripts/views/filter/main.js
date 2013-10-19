@@ -11,7 +11,8 @@ define([
 
       events: {
         'click .category-list .row div': 'onCategorySelect',
-        'click .filter-btn': 'onFilterClick'
+        'click .filter-btn': 'onFilterClick',
+        'click .time-toggle': 'onTimeToggleClick'
       },
 
       render: function() {
@@ -42,7 +43,12 @@ define([
         app.filter.categories = selectedTypes;
         Backbone.trigger('filter:change');
         app.hideActiveView();
+      },
+
+      onTimeToggleClick: function() {
+        this.$('.time-chooser').toggleClass('expanded');
       }
+
     });
 
     return MainOverlayView;

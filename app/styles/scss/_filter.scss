@@ -57,8 +57,30 @@
     }
   }
   .time-chooser {
-    display: none;
+    // display: none;
     text-align: center;
+    .time-toggle {
+      padding: 10px;
+      &:after {
+        position: absolute;
+        content: '';
+        background-image: url(../images/dropdown_arrow.png);
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        background-size: 40%;
+        background-position: 50% 7px;
+      }
+    }
+    .time-expansion {
+      max-height: 0;
+      @include transition(max-height 0.3s);
+    }
+    &.expanded {
+      .time-expansion {
+        max-height: 100px;
+      }
+    }
   }
 
   .filter-btn {
