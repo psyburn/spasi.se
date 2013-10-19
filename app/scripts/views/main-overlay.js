@@ -16,7 +16,8 @@ define([
       events: {
         'click .list-toggle': 'onListToggle',
         'focus .search-field': 'onSearchFieldFocus',
-        'keyup .search-field': 'onSearchKeyUp'
+        'keyup .search-field': 'onSearchKeyUp',
+        'click .filter-btn': 'onFilterClick'
       },
 
     render: function() {
@@ -53,6 +54,10 @@ define([
         if (this.searchList) {
           this.searchList.keyPress(this.$('.search-field').val());
         }
+      },
+
+      onFilterClick: function() {
+        app.router.navigate('filter', true);
       }
 
     });
