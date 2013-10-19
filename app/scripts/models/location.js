@@ -1,5 +1,7 @@
-define(
-  function () {
+define([
+    'app'
+  ],
+  function (app) {
     'use strict';
 
     var LocationModel = Backbone.Model.extend({

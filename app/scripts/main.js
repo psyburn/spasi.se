@@ -19,12 +19,15 @@ require.config({
 require(['app',
   'routers/main',
 
+  'collections/locations',
+
   //plugins
   'backbone-parse',
   'Points'
   ], function (
     app,
-    MainRouter
+    MainRouter,
+    LocationsCollection
   ) {
     'use strict';
     // use app here
@@ -34,6 +37,8 @@ require(['app',
 
     new MainRouter();
     window.app = app;
+
+    app.locations = new LocationsCollection();
 
     Backbone.history.start({
       pushState: false,
