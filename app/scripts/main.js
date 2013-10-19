@@ -13,7 +13,9 @@ require.config({
       deps: ['backbone']
     },
     'Points': {},
-    'scooch': {}
+    'scooch': {
+      deps: ['jquery']
+    }
   }
 });
 

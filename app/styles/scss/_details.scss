@@ -1,0 +1,22 @@
+.details-view {
+  .gallery {
+    height: 200px;
+    .m-item {
+      text-align: center;
+      img {
+        max-height: 300px;
+        max-width: 300px;
+      }
+    }
+  }
+  .title {
+    font-size: 1.3rem;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .description {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
