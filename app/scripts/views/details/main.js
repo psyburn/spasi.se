@@ -12,7 +12,6 @@ define([
     events: {},
 
     render: function() {
-      debugger
       this.$el.html(this.template(this.model.toJSON()));
       this.$('.gallery').scooch();
       return this;
