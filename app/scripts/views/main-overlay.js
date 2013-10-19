@@ -17,7 +17,8 @@ define([
         'click .list-toggle': 'onListToggle',
         'focus .search-field': 'onSearchFieldFocus',
         'keyup .search-field': 'onSearchKeyUp',
-        'click .filter-btn': 'onFilterClick'
+        'click .filter-btn': 'onFilterClick',
+        'click .location-clear': 'onLocationClearClick'
       },
 
     render: function() {
@@ -27,7 +28,7 @@ define([
 
       onListToggle: function() {
         var locationList = new LocationList({
-          collection: app.locations
+          collection: app.collections.locations
         });
         app.setActiveView(locationList);
         this.listenTo(locationList, 'click:item', function() {
@@ -45,23 +46,46 @@ define([
         this.searchList.on('map:search', function(query) {
           me.trigger('map:search', query);
         });
-        this.$('.header').addClass('searching');
-        app.collections.places.trigger('reset');
+        this.searchList.on('place:set', this.setPlace, this);
         app.setActiveView(this.searchList);
+        this.$('.header').addClass('searching');
+        app.collections.places.reset();
       },
 
       onSearchKeyUp: function(e) {
+        var query = this.$('.search-field').val();
+        this.$('.search')[query.length ? 'removeClass' : 'addClass']('nearby');
         if (this.searchList) {
-          if (e.keyCode == 13) {
+          if (e.keyCode === 13) {
             this.searchList.enterPress();
           } else {
-            this.searchList.keyPress(this.$('.search-field').val());
+            this.searchList.keyPress(query);
           }
         }
       },
 
       onFilterClick: function() {
         app.router.navigate('filter', true);
+      },
+
+      onLocationClearClick: function() {
+        this.setPlace();
+      },
+
+      setPlace: function(place) {
+        if (this.searchList) {
+          this.searchList.remove();
+        }
+        this.$('.header').removeClass('searching');
+        if (place) {
+          this.$('.search-field').val(place.get('title'));
+        } else {
+          this.$('.search').addClass('nearby');
+          this.$('.search-field').val('');
+          app.collections.places.reset([]);
+          // TODO: Get user place
+        }
+        // TODO: Trigger repositioning
       }
 
     });

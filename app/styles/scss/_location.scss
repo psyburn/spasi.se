@@ -12,10 +12,11 @@
       .search {
         -webkit-flex: 1;
         margin-right: 10px;
+        display: -webkit-flex;
         @extend .card;
 
         input {
-          background-image: url('search.jpg');
+          background-image: url('../images/search.png');
           background-size: 32px 32px;
           background-repeat: no-repeat;
           background-position: 4px 4px;
@@ -23,12 +24,26 @@
           background-color: transparent;
           color: #555;
           font-size: 28px;
-          padding-left: 50px;
+          padding-left: 38px;
           line-height: 40px;
           outline: none;
+          -webkit-flex: 1;
+        }
 
-          &.nearby {
-            background-image: url('target.jpg');
+        .location-clear {
+          background-image: url('../images/clear.png');
+          background-size: 32px 32px;
+          background-position: 4px 4px;
+          background-repeat: no-repeat;
+          width: 40px;
+        }
+
+        &.nearby {
+          input {
+            background-image: url('../images/position.png');
+          }
+          .location-clear {
+            display: none;
           }
         }
       }
@@ -47,7 +62,11 @@
         height: 60px;
         padding: 10px;
 
-        .filter {
+        .search input {
+          background-image: url('../images/search.png');
+        }
+
+        .filter-btn {
           display: none;
         }
       }
