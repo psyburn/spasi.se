@@ -51,9 +51,7 @@ function(
     },
 
     selectPlace: function(place) {
-      // Set place
-      console.log(place);
-      // Hide list
+      this.trigger('place:set', place);
     }
   });
 

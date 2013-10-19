@@ -11,11 +11,18 @@ define([
 
       initialize: function() {
         Backbone.on('change:pos', this.onPositionChange, this);
+        Backbone.on('filter:change', this.onFilterChange, this);
       },
 
       onPositionChange: function(options) {
         var me = this;
         app.filter.location = options;
+        this.load(function() {
+          me.trigger('reset');
+        });
+      },
+
+      onFilterChange: function() {
         this.load(function() {
           me.trigger('reset');
         });
