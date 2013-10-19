@@ -12,6 +12,7 @@ define([
     center: null,
     markers: [],
     positionMarker: null,
+    currentPosition: null,
 
     initialize: function() {
       app.loadGmaps(this, this.initMap);
@@ -101,6 +102,7 @@ define([
     },
 
     onGetCurrentLocation: function(position) {
+      this.currentPosition = position;
       this.setPosition(position.coords.latitude, position.coords.longitude);
     },
 

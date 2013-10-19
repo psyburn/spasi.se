@@ -4,7 +4,7 @@
   <div class="m-scooch-inner">
     <!-- the items -->
     <div class="m-item m-active">
-      <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=300x200&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= item.location.latitude %>,<%= item.location.longitude %>&sensor=false">
+      <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=300x200&maptype=roadmap&markers=color:blue%7C<%= item.location.latitude %>,<%= item.location.longitude %>&sensor=false">
     </div>
     <div class="m-item">
       <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=<%= item.location.latitude %>,<%= item.location.longitude %>&fov=90&heading=235&pitch=10&sensor=false">
@@ -15,6 +15,10 @@
     <a href="javascript: void(0)" data-slide="2">2</a>
   </div-->
 </div>
+
+<!--div class="navigate">
+  <a href="https://maps.google.com/maps?saddr=Current%20Location&dll=<%= item.location.latitude + ', ' + item.location.longitude %>" target="_blank"> Pokaži put na karti </a>
+</div-->
 
 <% if (item.description) { %>
   <div class="description card">
