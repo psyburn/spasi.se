@@ -201,6 +201,7 @@ define([
     attachMarkerListener: function(marker, index) {
       var me = this;
       google.maps.event.addListener(marker, 'click', function(event) {
+        console.log('Marker click');
         me.onMarkerClick.call(me, index);
       });
     },
@@ -228,3 +229,4 @@ define([
 
   return MapView;
 });
+;

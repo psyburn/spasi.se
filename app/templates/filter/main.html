@@ -10,19 +10,19 @@
     <div class="emergency" data-type="emergency">Hitna</div>
   </div>
 </div>
-<div class="time-chooser expanded">
+<div class="time-chooser">
   <div class="time-toggle"> Vrijeme </div>
   <div class="no-time"></div>
   <div class="set-time">
-    <form class="pure-form pure-g">
+    <form class="pure-form pure-g pure-form-aligned">
       <div class="pure-u-1-2">
-        <input type="text" class="pure-input-1 time-from" placeholder="Od">
+        <input id="time-from" type="text" class="pure-input-1 time-from" placeholder="Od" value="8">
       </div>
       <div class="pure-u-1-2">
-        <input type="text" class="pure-input-1 time-to" placeholder="Do">
+        <input type="text" class="pure-input-1 time-to" placeholder="Do" value="20">
       </div>
       <div class="pure-u-1">
-        <input type="text" class="pure-input-1 day" placeholder="Na dan">
+        <input type="text" class="pure-input-1 day" placeholder="Na dan" value="<%= new Date().toLocaleDateString() %>">
       </div>
     </form>
   </div>
