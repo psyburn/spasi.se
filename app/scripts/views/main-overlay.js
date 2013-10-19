@@ -41,7 +41,7 @@ define([
         this.searchList = new SearchList({
           collection: app.collections.places
         });
-        this.searchView.on('map:search', function(query) {
+        this.searchList.on('map:search', function(query) {
           me.trigger('map:search', query);
         });
         this.$('.header').addClass('searching');
