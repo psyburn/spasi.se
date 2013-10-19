@@ -21,27 +21,33 @@
 
         &.hospital {
           background-image: url(../../images/marker_hospital.png);
+          background-color: #FA8E7D;
         }
 
         &.center {
           background-image: url(../../images/marker_center.png);
+          background-color: #B8D9E1;
         }
 
         &.defibrilator {
           background-image: url(../../images/marker_defibrilator.png);
+          background-color: #FAFAEF;
         }
 
         &.office {
           background-image: url(../../images/marker_office.png);
+          background-color: #60B1DE;
         }
 
         &.emergency {
           background-image: url(../../images/marker_emergency.png);
+          background-color: #F0D44F;
         }
 
 
         &.pharmacy {
           background-image: url(../../images/marker_pharmacy.png);
+          background-color: #A7CA5E;
         }
 
         &.selected {
@@ -51,11 +57,35 @@
     }
   }
   .time-chooser {
-    display: none;
+    // display: none;
     text-align: center;
+    .time-toggle {
+      padding: 10px;
+      &:after {
+        position: absolute;
+        content: '';
+        background-image: url(../images/dropdown_arrow.png);
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        background-size: 40%;
+        background-position: 50% 7px;
+      }
+    }
+    .time-expansion {
+      max-height: 0;
+      @include transition(max-height 0.3s);
+    }
+    &.expanded {
+      .time-expansion {
+        max-height: 100px;
+      }
+    }
   }
 
   .filter-btn {
     margin-top: 20px;
   }
+
 }
+
