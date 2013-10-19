@@ -2,12 +2,14 @@ define([
     'app',
     'views/location/list',
     'views/search/list',
-    'views/details/preview'
+    'views/details/preview',
+    'views/details/main'
   ], function(
     app,
     LocationList,
     SearchList,
-    DetailsPreview
+    DetailsPreview,
+    DetailView
   ) {
     'use strict';
 
@@ -25,13 +27,17 @@ define([
 
       render: function() {
         this.initDetailsPreviewCard();
-        var me = this;
         this.$el.html(this.template());
         return this;
       },
 
       initDetailsPreviewCard: function() {
+        var me = this;
         this.detailsPreview =  new DetailsPreview();
+        this.listenTo(this.detailsPreview, 'click', function(model) {
+          var view = new DetailView({model: model});
+          app.setActiveView(view);
+        });
       },
 
       showPreviewCard: function(model) {
