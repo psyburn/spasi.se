@@ -42,6 +42,13 @@ input, textarea {
     white-space: nowrap;
   }
 
+  .description {
+    margin: -8px auto auto 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   .icon {
     width: 56px;
     height: 56px;
@@ -132,9 +139,14 @@ input, textarea {
     height: 100px;
   }
 
-  .btn-send {
+  .button {
     margin: 10px;
   }
+}
+
+.sent {
+  margin: 10px;
+  display: none;
 }
 
 @import "compass";

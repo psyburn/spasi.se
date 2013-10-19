@@ -9,7 +9,8 @@ define([
     className: 'report-view',
     template: app.fetchTemplate('report/main'),
     events: {
-      'click .btn-send': 'onButtonSendClick'
+      'click .btn-send': 'onButtonSendClick',
+      'click .btn-close': 'onButtonCloseClick'
     },
 
     render: function() {
@@ -18,8 +19,17 @@ define([
     },
 
     onButtonSendClick: function() {
-      var text = this.$('.text-report').html();
+      var text = this.$('.text-report').val();
       this.trigger('report:add', this.model, text);
+    },
+
+    sent: function() {
+      this.$('.btn-send').hide();
+      this.$('.sent').show();
+    },
+
+    onButtonCloseClick: function() {
+      app.hideActiveView();
     }
 
   });

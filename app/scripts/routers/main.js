@@ -54,17 +54,19 @@ function(
       Backbone.on('map:marker:click', function(model) {
         me.mainView.showPreviewCard(model);
       });
-      $('.footer').removeClass('list');
       Backbone.on('report', function(model) {
         me.navigate('report', false);
         var report = new ReportView(model);
         app.setActiveView(report);
+        $('.footer').removeClass('list');
         report.on('report:add', function(model, text) {
           app.collections.reports.add({
             model: model,
             text: text,
             date: new Date()
           });
+          app.collections.reports.invoke('save');
+          report.sent();
         });
       });
     },
