@@ -2,7 +2,7 @@ require.config({
   paths: {
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
-    underscore: '../bower_components/lodash/dist/lodash'
+    underscore: '../bower_components/lodash/dist/lodash',
   },
   shim: {
     backbone: {
@@ -12,7 +12,8 @@ require.config({
     'backbone-parse': {
       deps: ['backbone']
     },
-    'Points': {}
+    'Points': {},
+    'scooch': {}
   }
 });
 
@@ -26,7 +27,8 @@ require([
 
   //plugins
   'backbone-parse',
-  'Points'
+  'Points',
+  'scooch'
 ], function(
     app,
     MainRouter,

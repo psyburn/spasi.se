@@ -7,12 +7,12 @@
       top: 10px;
       left: 10px;
       right: 10px;
-      display: -webkit-flex;
+      @include display-box;
 
       .search {
-        -webkit-flex: 1;
+        @include box-flex(1);
         margin-right: 10px;
-        display: -webkit-flex;
+        @include display-box;
         @extend .card;
 
         input {
@@ -27,7 +27,7 @@
           padding-left: 38px;
           line-height: 40px;
           outline: none;
-          -webkit-flex: 1;
+          @include box-flex(1);
         }
 
         .location-clear {
