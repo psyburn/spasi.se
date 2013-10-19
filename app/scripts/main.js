@@ -38,6 +38,7 @@ require(['app',
   // use app here
 
   console.log(app);
+  window.app = app;
 
   new MainRouter();
 
