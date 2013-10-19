@@ -11,7 +11,7 @@ define([
   ) {
   "use strict";
 
-    var CompositeView = new Backbone.View.extend({
+    var CompositeView = Backbone.View.extend({
     className: 'composite-view',
     template: app.fetchTemplate('main'),
 

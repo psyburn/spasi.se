@@ -39,6 +39,7 @@ require(['app',
     var JST = window.JST = window.JST || {};
 
     new MainRouter();
+    window.app = app;
 
     Backbone.history.start({
       pushState: false,
