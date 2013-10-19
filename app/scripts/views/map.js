@@ -14,6 +14,7 @@ define([
 
     initialize: function() {
       app.loadGmaps(this, this.initMap);
+      this.listenTo(app.locations, 'reset', this.refreshLocations, this);
     },
 
     render: function() {
@@ -77,6 +78,11 @@ define([
         this.refreshPlaces(results);
         this.createMarkers(results);
       }
+    },
+
+    refreshLocations: function() {
+      app.locations.forEach(function(location) {
+      }, this);
     },
 
     refreshPlaces: function(results) {
