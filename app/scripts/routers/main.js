@@ -3,7 +3,8 @@ define([
   'backbone',
 
   'views/main',
-  'views/map'
+  'views/map',
+  'views/filter/main'
 ],
 
 function(
@@ -11,13 +12,15 @@ function(
     Backbone,
 
     MainView,
-    MapView
+    MapView,
+    FilterView
   ) {
   'use strict';
   var Router = Backbone.Router.extend({
     routes: {
       '': 'index',
-      'map': 'map'
+      'map': 'map',
+      'filter': 'filter'
     },
 
     index: function() {
@@ -30,6 +33,11 @@ function(
       this.mapView = new MapView();
       app.locations.fetch();
       $('body').html(this.mapView.render().$el);
+    },
+
+    filter: function() {
+      this.filterView = new FilterView();
+      $('body').html(this.filterView.render().$el);
     }
 
   });
