@@ -12,7 +12,8 @@ define([
       template: app.fetchTemplate('main-overlay'),
 
       events: {
-        'pointerend .list-toggle': 'onListToggle'
+        'pointerend .list-toggle': 'onListToggle',
+        'focus .search-field': 'onSearchFieldFocus'
       },
 
       render: function() {
@@ -27,6 +28,11 @@ define([
         });
         this.$el.html(locationList.render().el);
 
+      },
+
+      onSearchFieldFocus: function() {
+        // Show autocomplete
+        console.log('search')
       }
 
     });
