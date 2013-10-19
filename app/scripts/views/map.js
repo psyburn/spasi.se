@@ -9,7 +9,6 @@ define([
   $,
   _
 ) {
-
   var MapView = new Backbone.View.extend({
     className: 'map-view',
     map: null,

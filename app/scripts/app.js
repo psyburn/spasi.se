@@ -8,71 +8,54 @@ define([
     _,
     Backbone
   ) {
-  'use strict';
+    'use strict';
 
-  var app = {
-    root: '/',
-    gmaps: {
-      url: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyANYgRiD8Ra92P08fC0rm3v_TPLkRitLQw&sensor=true'
-    }
-  };
-
-  _.extend(app, {
-    fetchTemplate: function(path) {
-      var fullPath = 'app/templates/' + path + '.html';
-      if (!JST[fullPath]) {
-        $.ajax({
-          url: app.root + fullPath,
-          async: false,
-          success: function(contents) {
-            JST[fullPath] = _.template(contents);
-          }
-        });
+    var app = {
+      root: '/',
+      gmaps: {
+        url: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyANYgRiD8Ra92P08fC0rm3v_TPLkRitLQw&sensor=true'
       }
+    };
 
-      return JST[fullPath];
-    },
+    _.extend(app, {
+      fetchTemplate: function(path) {
+        var fullPath = 'app/templates/' + path + '.html';
+        if (!JST[fullPath]) {
+          $.ajax({
+            url: app.root + fullPath,
+            async: false,
+            success: function(contents) {
+              JST[fullPath] = _.template(contents);
+            }
+          });
+        }
 
-    loadGmaps: function(context, callback) {
-      if (!this.gmaps.loaded) {
-        this.gmaps.loadContext = context;
-        this.gmaps.loadCallback = callback;
+        return JST[fullPath];
+      },
 
-        $('<script>')
-          .attr('type', 'text/javascript')
-          .attr('src', this.gmaps.url + '&libraries=places&callback=app.onGmapsLoad')
-          .appendTo('head');
+      loadGmaps: function(context, callback) {
+        if (!this.gmaps.loaded) {
+          this.gmaps.loadContext = context;
+          this.gmaps.loadCallback = callback;
 
-        this.gmaps.loaded = true;
+          $('<script>')
+            .attr('type', 'text/javascript')
+            .attr('src', this.gmaps.url + '&libraries=places&callback=app.onGmapsLoad')
+            .appendTo('head');
+
+          this.gmaps.loaded = true;
+        }
+      },
+
+      onGmapsLoad: function() {
+        if (this.gmaps.loadCallback && this.gmaps.loadContext) {
+          this.gmaps.loadCallback.call(this.gmaps.loadContext);
+        }
       }
-    },
+    });
 
-    onGmapsLoad: function() {
-      if (this.gmaps.loadCallback && this.gmaps.loadContext) {
-        this.gmaps.loadCallback.call(this.gmaps.loadContext);
-      }
-    }
+    // Localize or create a new JavaScript Template object.
+    var JST = window.JST = window.JST || {};
+
+    return app;
   });
-
-  _.extend(app, {
-    fetchTemplate: function(path) {
-      var fullPath = 'app/templates/' + path + '.html';
-      if (!JST[fullPath]) {
-        $.ajax({
-          url: app.root + fullPath,
-          async: false,
-          success: function(contents) {
-            JST[fullPath] = _.template(contents);
-          }
-        });
-      }
-
-      return JST[fullPath];
-    }
-  });
-
-  // Localize or create a new JavaScript Template object.
-  var JST = window.JST = window.JST || {};
-
-  return app;
-});
