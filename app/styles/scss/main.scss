@@ -1,3 +1,20 @@
+* {
+  -webkit-user-drag: none !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  font-weight: bold;
+}
+
+input, textarea {
+  -webkit-user-select: auto !important;
+}
+
+::-webkit-input-placeholder {
+  color: #777;
+  font-weight: 100;
+}
+
 #card-preview {
   position: absolute;
   bottom: 0;
