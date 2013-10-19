@@ -69,6 +69,7 @@ function(
 
     resetSearch: function() {
       $('.search-field').val(this.original).blur();
+      $('.searching').removeClass('searching');
     }
   });
 
