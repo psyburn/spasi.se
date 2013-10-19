@@ -20,27 +20,33 @@
 
         &.hospital {
           background-image: url(../../images/marker_hospital.png);
+          background-color: #FA8E7D;
         }
 
         &.center {
           background-image: url(../../images/marker_center.png);
+          background-color: #B8D9E1;
         }
 
         &.defibrilator {
           background-image: url(../../images/marker_defibrilator.png);
+          background-color: #FAFAEF;
         }
 
         &.office {
           background-image: url(../../images/marker_office.png);
+          background-color: #60B1DE;
         }
 
         &.emergency {
           background-image: url(../../images/marker_emergency.png);
+          background-color: #F0D44F;
         }
 
 
         &.pharmacy {
           background-image: url(../../images/marker_pharmacy.png);
+          background-color: #A7CA5E;
         }
 
         &.selected {
