@@ -42,10 +42,11 @@ require([
     new MainRouter();
     window.app = app;
 
-    app.locations = new LocationsCollection();
     app.collections = {
+      locations: new LocationsCollection(),
       places: new PlacesCollection()
     };
+
     Backbone.history.start({
       pushState: false,
       root: app.root

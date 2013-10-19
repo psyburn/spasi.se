@@ -1,9 +1,11 @@
 define([
     'app',
-    'views/location/list'
+    'views/location/list',
+    'views/search/list'
   ], function(
     app,
-    LocationList
+    LocationList,
+    SearchList
   ) {
     'use strict';
 
@@ -31,7 +33,12 @@ define([
 
       onSearchFieldFocus: function() {
         // Show autocomplete
-        console.log('search')
+        var searchList = new SearchList({
+          collection: app.collections.places
+        });
+        this.$('.header').addClass('searching');
+        app.collections.places.trigger('reset');
+        app.setActiveView(searchList);
       }
 
     });

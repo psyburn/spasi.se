@@ -37,6 +37,20 @@
         @extend .card;
         width: 40px;
       }
+
+      &.searching {
+        margin: auto;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        padding: 10px;
+
+        .filter {
+          display: none;
+        }
+      }
     }
 
     .footer {
