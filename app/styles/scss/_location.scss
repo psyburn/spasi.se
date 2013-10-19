@@ -54,13 +54,9 @@
       }
 
       &.searching {
-        margin: auto;
-        background-color: #fff;
-        top: 0;
-        left: 0;
-        right: 0;
         height: 60px;
         padding: 10px;
+        z-index: 4;
 
         .search input {
           background-image: url('../images/search.png');

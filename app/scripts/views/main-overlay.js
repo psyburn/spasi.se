@@ -75,7 +75,7 @@ define([
       setPlace: function(place) {
         var position = {};
         if (this.searchList) {
-          this.searchList.remove();
+          app.hideActiveView();
         }
         this.$('.header').removeClass('searching');
         if (place) {

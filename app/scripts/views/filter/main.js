@@ -16,6 +16,9 @@ define([
 
       render: function() {
         this.$el.html(this.template());
+        for (var i = 0; i < app.filter.categories.length; i++) {
+          this.$('[data-type=' + app.filter.categories[i] + ']').addClass('selected');
+        }
         return this;
       },
 
@@ -38,6 +41,7 @@ define([
 
         app.filter.categories = selectedTypes;
         Backbone.trigger('filter:change');
+        app.hideActiveView();
       }
     });
 

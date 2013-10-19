@@ -35,7 +35,11 @@ function(
     },
 
     filter: function() {
+      var me = this;
       this.filterView = new FilterView();
+      Backbone.on('filter:change', function() {
+        me.navigate('', false);
+      });
       app.setActiveView(this.filterView);
     }
 
