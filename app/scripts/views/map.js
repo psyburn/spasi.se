@@ -55,7 +55,6 @@ define([
 
       this.places = new google.maps.places.PlacesService(this.map);
       this.showCurrentLocation();
-      app.collections.locations.loadMock();
     },
 
     getPosition: function() {

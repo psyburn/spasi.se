@@ -28,6 +28,7 @@ require([
 
   'collections/locations',
   'collections/places',
+  'collections/reports',
 
   //plugins
   'toucher',
@@ -39,6 +40,7 @@ require([
     MainRouter,
     LocationsCollection,
     PlacesCollection,
+    ReportsCollection,
     Toucher
   ) {
     'use strict';
@@ -52,7 +54,8 @@ require([
 
     app.collections = {
       locations: new LocationsCollection(),
-      places: new PlacesCollection()
+      places: new PlacesCollection(),
+      reports: new ReportsCollection()
     };
 
     app.filter = {
