@@ -1,4 +1,3 @@
-// Generated on 2013-10-17 using generator-mobile 0.0.2
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
