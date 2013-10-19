@@ -76,6 +76,7 @@ define([
         app.setActiveView(this.searchList);
         this.$('.header').addClass('searching');
         app.collections.places.reset();
+        this.trigger('search:focus');
       },
 
       onSearchKeyUp: function(e) {
