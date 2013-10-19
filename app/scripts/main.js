@@ -47,9 +47,24 @@ require([
       places: new PlacesCollection()
     };
 
+    app.filter = {
+      categories: [],
+      location: {
+        sw: {
+          lat: 0,
+          lon: 0
+        },
+        ne: {
+          lat: 0,
+          lon: 0
+        }
+      },
+      workingHours: false
+    };
+
     Backbone.history.start({
       pushState: false,
       root: app.root
     });
 
-});
+  });

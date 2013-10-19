@@ -8,24 +8,34 @@ define([
       _parse_class_name: 'Location',
       model: Model,
       url: 'mock/data.json',
-      load: function(options, callback) {
-        // Categories
-        // Location
-        // Work hours
+
+      initialize: function() {
+        Backbone.on('change:pos', this.onPositionChange, this);
+      },
+
+      onPositionChange: function(options) {
+        var me = this;
+        app.filter.location = options;
+        this.load(function() {
+          me.trigger('reset');
+        });
+      },
+
+      load: function(callback) {
         var query = {
           'category': {
-            '$in': options.categories
+            '$in': app.filter.categories
           },
           'location': {
             '$within': {
               '$box': [{
                 '__type': 'GeoPoint',
-                'latitude': options.location.sw.lat,
-                'longitude': options.location.sw.lon
+                'latitude': app.filter.location.sw.lat,
+                'longitude': app.filter.location.sw.lon
               }, {
                 '__type': 'GeoPoint',
-                'latitude': options.location.ne.lat,
-                'longitude': options.location.ne.lon
+                'latitude': app.filter.location.ne.lat,
+                'longitude': app.filter.location.ne.lon
               }]
             }
           }
