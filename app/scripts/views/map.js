@@ -15,7 +15,7 @@ define([
 
     initialize: function() {
       app.loadGmaps(this, this.initMap);
-      // this.listenTo(app.collections.locations, 'reset', this.refreshLocations, this);
+      this.listenTo(app.collections.locations, 'reset', this.refreshLocations, this);
     },
 
     render: function() {
@@ -131,7 +131,8 @@ define([
     },
 
     displayLocation: function(location) {
-      this.addMarker(location, {
+      var latLng = new google.maps.LatLng(location.get('location').latitude, location.get('location').longitude);
+      this.addMarker(latLng, {
         url: 'images/marker_' + location.get('category') + '.png',
         size: new google.maps.Size(30, 30),
         origin: new google.maps.Point(0, 0),
