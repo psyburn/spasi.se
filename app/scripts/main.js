@@ -74,6 +74,7 @@ require([
       workingHours: false
     };
     Toucher.bind('.touchable');
+    FastClick.attach(document.body);
     Backbone.history.start({
       pushState: false,
       root: app.root
