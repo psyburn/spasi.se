@@ -15,7 +15,8 @@ define([
 
       events: {
         'click .list-toggle': 'onListToggle',
-        'focus .search-field': 'onSearchFieldFocus'
+        'focus .search-field': 'onSearchFieldFocus',
+        'keyup .search-field': 'onSearchKeyUp'
       },
 
       render: function() {
@@ -33,12 +34,22 @@ define([
 
       onSearchFieldFocus: function() {
         // Show autocomplete
-        var searchList = new SearchList({
+        var me = this;
+        this.searchList = new SearchList({
           collection: app.collections.places
+        });
+        this.searchView.on('map:search', function(query) {
+          me.trigger('map:search', query);
         });
         this.$('.header').addClass('searching');
         app.collections.places.trigger('reset');
-        app.setActiveView(searchList);
+        app.setActiveView(this.searchList);
+      },
+
+      onSearchKeyUp: function() {
+        if (this.searchList) {
+          this.searchList.keyPress(this.$('.search-field').val());
+        }
       }
 
     });
