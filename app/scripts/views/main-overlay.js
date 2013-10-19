@@ -42,6 +42,7 @@ define([
         this.detailsPreview =  new DetailsPreview();
         this.detailsPreview.hide();
         this.listenTo(this.detailsPreview, 'click', function(model) {
+          me.trigger('details:show', model);
           var view = new DetailView({model: model});
           app.setActiveView(view);
         });
@@ -53,6 +54,7 @@ define([
       },
 
       onListToggle: function() {
+        var me = this;
         var overlayFooter = this.$('.footer');
         if (overlayFooter.hasClass('list')) {
           overlayFooter.removeClass('list');
@@ -63,8 +65,11 @@ define([
             collection: app.collections.locations
           });
           app.setActiveView(locationList);
-          this.listenTo(locationList, 'click:item', function() {
-            console.log('clicked on location');
+          this.listenTo(locationList, 'click:item', function(model) {
+            me.trigger('details:show', model);
+            var view = new DetailView({model: model});
+            app.setActiveView(view);
+            me.$('.footer').removeClass('list');
           });
           locationList.addAll();
         }

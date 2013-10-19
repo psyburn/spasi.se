@@ -18,9 +18,10 @@ function(
   'use strict';
   var Router = Backbone.Router.extend({
     routes: {
-      '': 'index',
-      'map': 'map',
-      'filter': 'filter'
+      'filter': 'filter',
+      'search': 'search',
+      'details': 'details',
+      '': 'index'
     },
 
     initialized: false,
@@ -39,6 +40,9 @@ function(
       this.mainView.on('place:set', function() {
         me.navigate('', false);
       });
+      this.mainView.on('details:show', function(model) {
+        me.navigate('details', false);
+      });
       $('#main-content').html(this.mainView.render().el);
     },
 
@@ -55,10 +59,12 @@ function(
       Backbone.trigger('search:reset');
     },
 
-    map: function() {
-      this.init();
-      this.mapView = new MapView();
-      $('body').html(this.mapView.render().$el);
+    search: function() {
+      this.navigate('', true);
+    },
+
+    details: function() {
+      this.navigate('', true);
     },
 
     filter: function() {

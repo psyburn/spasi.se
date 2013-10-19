@@ -39,6 +39,9 @@ define([
         this.overlayView.on('place:set', function() {
           me.trigger('place:set');
         });
+        this.overlayView.on('details:show', function(model) {
+          me.trigger('details:show', model);
+        });
 
         this.mapsView = new MapsView();
         this.$('.map-container').html(this.mapsView.render().el);
