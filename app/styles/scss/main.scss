@@ -18,11 +18,63 @@ input, textarea {
 #card-preview {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
+  left: 8px;
+  right: 8px;
+  height: 56px;
   z-index: 500;
-  background: white;
+  background-color: #f7f7f7;
+  border: 1px solid #eee;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 25, 25, 0.4);
+  box-shadow: 0px 1px 2px 0px rgba(34, 25, 25, 0.4);
+  padding-left: 60px;
+
+  .title {
+    font-size: 18px;
+    padding: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .icon {
+    width: 56px;
+    height: 56px;
+    background-size: 32px 32px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    margin: 0 0 -10px -60px;
+
+    &.cat-hospital {
+        background-color: #FA8E7D;
+        background-image: url(../../images/marker_hospital.png);
+    }
+
+    &.cat-center {
+        background-color: #B8D9E1;
+        background-image: url(../../images/marker_center.png);
+    }
+
+    &.cat-defibrilator {
+        background-color: #FAFAEF;
+        background-image: url(../../images/marker_defibrilator.png);
+    }
+
+    &.cat-office {
+        background-color: #60B1DE;
+        background-image: url(../../images/marker_office.png);
+    }
+
+    &.cat-emergency {
+        background-color: #F0D44F;
+        background-image: url(../../images/marker_emergency.png);
+    }
+
+    &.cat-pharmacy {
+        background-color: #A7CA5E;
+        background-image: url(../../images/marker_pharmacy.png);
+    }
+  }
 }
 
 .card {
