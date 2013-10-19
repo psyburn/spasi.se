@@ -16,6 +16,7 @@ define(['app'], function(app) {
     },
 
     initMap: function() {
+      console.log('Init map...');
       this.map = new google.maps.Map(this.el, {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         panControl: true,
@@ -99,7 +100,7 @@ define(['app'], function(app) {
     deleteMarkers: function() {
       this.clearMarkers();
       this.markers = [];
-    },
+    }
 
   });
 

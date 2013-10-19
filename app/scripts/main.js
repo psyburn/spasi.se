@@ -32,17 +32,17 @@ require(['app',
     app,
     MainRouter
   ) {
-  'use strict';
-  // use app here
+    'use strict';
+    // use app here
 
-  console.log(app);
-  window.app = app;
+    // Localize or create a new JavaScript Template object.
+    var JST = window.JST = window.JST || {};
 
-  new MainRouter();
+    new MainRouter();
 
-
-  Backbone.history.start({
+    Backbone.history.start({
       pushState: false,
       root: app.root
     });
+
 });
