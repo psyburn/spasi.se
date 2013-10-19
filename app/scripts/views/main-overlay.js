@@ -11,7 +11,11 @@ define([
 
   var MainOverlayView = new Backbone.View.extend({
     className: 'main-overlay-view',
-    template: app.fetchTemplate('mainOverlay'),
+    template: app.fetchTemplate('main-overlay'),
+
+    events: {
+      ''
+    }
 
     render: function() {
       this.$el.html(this.template());

@@ -16,21 +16,25 @@ require.config({
     backbonelist: {
       deps: ['backbone'],
       exports: 'Backbone.List'
-    }
+    },
+    'Points': {}
   }
 });
 
 require(['app',
   'jquery',
   'backbone',
+  'underscore',
   'routers/main',
-  'backbone-parse',
 
   //plugins
-  'backbonelist'
+  'backbone-parse',
+  'backbonelist',
+  'Points'
   ], function (
     app,
     $,
+    _,
     Backbone,
     MainRouter
   ) {
@@ -39,6 +43,26 @@ require(['app',
 
   console.log(app);
   window.app = app;
+
+  _.extend(app, {
+    fetchTemplate: function(path) {
+      var fullPath = 'app/templates/' + path + '.html';
+      if (!JST[fullPath]) {
+        $.ajax({
+          url: app.root + fullPath,
+          async: false,
+          success: function(contents) {
+            JST[fullPath] = _.template(contents);
+          }
+        });
+      }
+
+      return JST[fullPath];
+    }
+  });
+
+  // Localize or create a new JavaScript Template object.
+  var JST = window.JST = window.JST || {};
 
   new MainRouter();
 

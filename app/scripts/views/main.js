@@ -2,7 +2,7 @@ define([
     'app',
 
     'views/map',
-    'views/mainOverlay'
+    'views/main-overlay'
   ], function(
     app,
 
