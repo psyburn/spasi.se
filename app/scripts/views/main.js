@@ -13,16 +13,19 @@ define([
 
     var CompositeView = new Backbone.View.extend({
     className: 'composite-view',
+    template: app.fetchTemplate('main'),
 
     mapsView: null,
     overlayView: null,
 
     render: function() {
+      this.$el.html(this.template());
+
       this.overlayView = new MainOverlayView();
-      this.$el.append(this.overlayView.render().el);
+      this.$('.overlay-container').html(this.overlayView.render().el);
 
       this.mapsView = new MapsView();
-      this.$el.append(this.mapsView.render().el);
+      this.$('.map-container').html(this.mapsView.render().el);
       return this;
     }
 
