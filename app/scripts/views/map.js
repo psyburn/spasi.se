@@ -1,4 +1,9 @@
-define(['app'], function(app) {
+define([
+  'app'
+], function(
+  app
+
+) {
 
   var MapView = Backbone.View.extend({
     className: 'map-view',
@@ -50,47 +55,58 @@ define(['app'], function(app) {
       console.log(position);
       this.center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       this.map.panTo(this.center);
+      this.addMarker(this.center);
+      this.performRadarSearch();
     },
 
     performRadarSearch: function() {
       var me = this;
-      var radius = 500;
+      var radius = 2000;
 
       this.places.radarSearch({
         location: this.center,
         radius: radius,
-        types: ['cafe']
+        types: ['cafe', 'restaurant']
       }, function(results, status) {
-        me.onPlacesSearch.call(me, results, status);
+        me.onPlacesSearchResults.call(me, results, status);
       });
     },
 
     onPlacesSearchResults: function(results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
+        this.refreshPlaces(results);
         this.createMarkers(results);
       }
     },
 
-    createMarkers: function(results) {
+    refreshPlaces: function(results) {
+      var places = [];
+      for(var i=0; i<results.length; i++) {
+        places.push({
+          title: results[i].html_attributions.length > 0 ? results[i].html_attributions[0] : 'Untitled',
+          location: results[i].geometry.location
+        });
+      }
+      app.collections.places.reset(places);
+    },
+
+    createMarkers: function(places) {
       for(var i=0; i < places.length; i++) {
-        this.markers.push(new google.maps.Marker({
-          map: this.map,
-          position: places[i].geometry.location,
-          // icon: {
-          //   url: filter.icon,
-          //   size: new google.maps.Size(30, 30),
-          //   origin: new google.maps.Point(0, 0),
-          //   anchor: new google.maps.Point(30, 30),
-          //   scaledSize: new google.maps.Size(30,30)
-          // },
-        }));
+        this.addMarker(places[i].geometry.location);
       }
     },
 
-    addMarker: function(place) {
+    addMarker: function(latLng) {
       var marker = new google.maps.Marker({
-        position: place.geometry.location,
+        position: latLng,
         map: this.map
+        // icon: {
+        //   url: filter.icon,
+        //   size: new google.maps.Size(30, 30),
+        //   origin: new google.maps.Point(0, 0),
+        //   anchor: new google.maps.Point(30, 30),
+        //   scaledSize: new google.maps.Size(30,30)
+        // },
       });
       this.markers.push(marker);
     },
