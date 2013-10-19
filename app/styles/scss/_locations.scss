@@ -1,54 +1,62 @@
+.location-list {
+  list-style: none;
+}
 .location-item {
   position: relative;
-  border: 0px solid;
+  border: none;
   margin: 5px;
   background-color: #eee;
-  border-width: 0 0 0 40px;
+  min-height: 50px;
+  padding-left: 60px;
 
-  &:before {
-    position: absolute;
-    content: "";
-    left: -40px;
-    top: 0;
-    bottom: 0;
-    width: 40px;
+  .icon {
+    width: 50px;
+    height: 50px;
     background-size: 32px 32px;
-    background-repeat: no-repeat;
     background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    margin: -10px 0 -10px -60px;
   }
 
   &.cat-hospital {
-    &:before {
+    .icon {
+      background-color: #FA8E7D;
       background-image: url(../../images/marker_hospital.png);
     }
   }
 
   &.cat-center {
-    &:before {
+    .icon {
+      background-color: #B8D9E1;
       background-image: url(../../images/marker_center.png);
     }
   }
 
   &.cat-defibrilator {
-    &:before {
+    .icon {
+      background-color: #FAFAEF;
       background-image: url(../../images/marker_defibrilator.png);
     }
   }
 
   &.cat-office {
-    &:before {
+    .icon {
+      background-color: #60B1DE;
       background-image: url(../../images/marker_office.png);
     }
   }
 
   &.cat-emergency {
-    &:before {
+    .icon {
+      background-color: #F0D44F;
       background-image: url(../../images/marker_emergency.png);
     }
   }
 
   &.cat-pharmacy {
-    &:before {
+    .icon {
+      background-color: #A7CA5E;
       background-image: url(../../images/marker_pharmacy.png);
     }
   }
