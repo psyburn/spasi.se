@@ -53,10 +53,14 @@ function(
 
     enterPress: function() {
       var me = this;
-      app.collections.places.once('reset', function() {
-        me.selectPlace(app.collections.places.first());
-      });
-      this.trigger('map:search', this.lastValue);
+      if (this.lastValue) {
+        app.collections.places.once('reset', function() {
+          me.selectPlace(app.collections.places.first());
+        });
+        this.trigger('map:search', this.lastValue);
+      } else {
+        this.selectPlace();
+      }
     },
 
     updateAutocomplete: function() {

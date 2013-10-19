@@ -34,6 +34,7 @@ define([
       initDetailsPreviewCard: function() {
         var me = this;
         this.detailsPreview =  new DetailsPreview();
+        this.detailsPreview.hide();
         this.listenTo(this.detailsPreview, 'click', function(model) {
           var view = new DetailView({model: model});
           app.setActiveView(view);
@@ -97,6 +98,7 @@ define([
 
       onLocationClearClick: function() {
         this.setPlace();
+        this.trigger('place:set');
       },
 
       setPlace: function(place) {
