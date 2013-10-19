@@ -14,6 +14,7 @@ function(
     template: app.fetchTemplate('search/item'),
 
     events: {
+      'click': 'onSearchClick'
     },
 
     initialize: function() {
@@ -24,6 +25,10 @@ function(
       this.$el.html(this.template(data));
 
       return this;
+    },
+
+    onSearchClick: function() {
+      this.trigger('click', this.model);
     }
 
   });

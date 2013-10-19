@@ -23,6 +23,10 @@ function(
     lastValue: '',
 
     render: function() {
+      var me = this;
+      this.on('click:item', function(model) {
+        me.selectPlace(model);
+      });
       return this;
     },
 
@@ -34,8 +38,22 @@ function(
       this.timeout = setTimeout($.proxy(this.updateAutocomplete, this), this.autocompleteTimeout);
     },
 
+    enterPress: function() {
+      var me = this;
+      app.collections.places.once('reset', function() {
+        me.selectPlace(app.collections.places.first());
+      });
+      this.trigger('map:search', this.lastValue);
+    },
+
     updateAutocomplete: function() {
       this.trigger('map:search', this.lastValue);
+    },
+
+    selectPlace: function(place) {
+      // Set place
+      console.log(place);
+      // Hide list
     }
   });
 
