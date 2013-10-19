@@ -8,6 +8,7 @@ define([
     var MainOverlayView = Backbone.View.extend({
       className: 'filter-view',
       template: app.fetchTemplate('filter/main'),
+      timeFilter: false,
 
       events: {
         'click .category-list .row div': 'onCategorySelect',
@@ -41,12 +42,36 @@ define([
         }
 
         app.filter.categories = selectedTypes;
+
+        if (this.timeFilter) {
+          var timeFrom = this.$('.time-from').val() || 8;
+          var timeTo = this.$('.time-to').val() || 20;
+          var day = this.$('.day').val() ? new Date(this.$('.day').val()) : new Date();
+          app.filter.time = {
+            from: timeFrom,
+            to: timeTo,
+            day: day.getDay()
+          };
+        } else {
+          app.filter.time = null;
+        }
+
         Backbone.trigger('filter:change');
         app.hideActiveView();
       },
 
       onTimeToggleClick: function() {
-        this.$('.time-chooser').toggleClass('expanded');
+        if (this.timeFilter) {
+          this.$('.time-chooser').removeClass('expanded');
+          this.timeFilter = false;
+        } else {
+          this.$('.time-chooser').addClass('expanded');
+          this.timeFilter = true;
+        }
+      },
+
+      getFilter: function() {
+
       }
 
     });
