@@ -39,6 +39,13 @@ function(
       $('#main-content').html(this.mainView.render().el);
     },
 
+    initialize: function() {
+      var me = this;
+      Backbone.on('map:marker:click', function(model) {
+        me.mainView.showPreviewCard(model);
+      });
+    },
+
     index: function() {
       this.init();
       app.hideActiveView();
