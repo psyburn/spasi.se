@@ -27,7 +27,7 @@ require([
   //plugins
   'backbone-parse',
   'Points'
-  ], function (
+], function(
     app,
     MainRouter,
     LocationsCollection,
@@ -49,9 +49,9 @@ require([
 
     app.filter = {
       categories: [
-        "emergency",
-        "defibrilator",
-        "hospital"
+        'emergency',
+        'defibrilator',
+        'hospital'
       ],
       location: {
         sw: {
