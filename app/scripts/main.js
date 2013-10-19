@@ -8,6 +8,9 @@ require.config({
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+    'backbone-parse': {
+      deps: ['backbone']
     }
   }
 });
@@ -15,7 +18,8 @@ require.config({
 require(['app',
   'jquery',
   'backbone',
-  'routers/main'
+  'routers/main',
+  'backbone-parse'
   ], function (
     app,
     $,
