@@ -18,9 +18,14 @@ function(
     tagName: 'ul',
     className: 'location-list',
     singleItem: Item,
+    empty: app.fetchTemplate('location/empty'),
 
     render: function() {
       return this;
+    },
+
+    emptyView: function() {
+      this.$el.html(this.empty());
     }
   });
 

@@ -28,11 +28,18 @@ function(
       if (this.showInfo) {
         this.$el.prepend(app.infoContainer.$el.clone());
       }
-      this.collection.each(function(item) {
-        this.addItem(new this.singleItem({
-          model: item
-        }));
-      }, this);
+
+      if (this.collection.length) {
+        this.collection.each(function(item) {
+          this.addItem(new this.singleItem({
+            model: item
+          }));
+        }, this);
+      } else {
+        if (this.emptyView) {
+          this.emptyView();
+        }
+      }
       this.trigger('change');
     },
 
