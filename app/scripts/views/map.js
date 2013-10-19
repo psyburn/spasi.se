@@ -73,6 +73,21 @@ define([
           lng: lng
         }
       };
+      if (!this.positionMarker) {
+        this.positionMarker = new google.maps.Marker({
+          position: this.center,
+          map: this.map,
+          icon: {
+            url: 'images/marker_position.png',
+            size: new google.maps.Size(50, 50),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(25, 50),
+            scaledSize: new google.maps.Size(50,50)
+          }
+        });
+      } else {
+        this.positionMarker.setPosition(this.center);
+      }
     },
 
     showCurrentLocation: function() {
@@ -88,17 +103,6 @@ define([
 
     onGetCurrentLocation: function(position) {
       this.setPosition(position.coords.latitude, position.coords.longitude);
-      this.positionMarker = new google.maps.Marker({
-        position: this.center,
-        map: this.map,
-        icon: {
-          url: 'images/marker_position.png',
-          size: new google.maps.Size(50, 50),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(25, 50),
-          scaledSize: new google.maps.Size(50,50)
-        }
-      });
     },
 
     searchPlaces: function(keyword) {
