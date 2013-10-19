@@ -16,6 +16,7 @@
         @extend .card;
 
         input {
+          @include display-box;
           background-image: url('../images/search.png');
           background-size: 32px 32px;
           background-repeat: no-repeat;

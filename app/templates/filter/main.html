@@ -1,11 +1,11 @@
 <div class="category-list">
   <div class="row">
     <div class="hospital" data-type="hospital">Bolnica</div>
-    <div class="center" data-type="center">DomZdravlja</div>
+    <div class="center" data-type="center">Dom zdravlja</div>
     <div class="office" data-type="office">Ambulanta</div>
   </div>
   <div class="row">
-    <div class="defibrilator" data-type="defibrilator">Defibrillator</div>
+    <div class="defibrilator" data-type="defibrilator">Defibrilator</div>
     <div class="pharmacy" data-type="pharmacy">Ljekarna</div>
     <div class="emergency" data-type="emergency">Hitna</div>
   </div>
@@ -22,7 +22,15 @@
         <input type="text" class="pure-input-1 time-to" placeholder="Do" value="20">
       </div>
       <div class="pure-u-1">
-        <input type="text" class="pure-input-1 day" placeholder="Na dan" value="<%= new Date().toLocaleDateString() %>">
+        <select class="pure-input-1 day">
+          <option value="0">Ponedjeljak</option>
+          <option value="1">Utorak</option>
+          <option value="2">Srijeda</option>
+          <option value="3">Četvrtak</option>
+          <option value="4">Petak</option>
+          <option value="5">Subota</option>
+          <option value="6">Nedjelja</option>
+        </select>
       </div>
     </form>
   </div>
