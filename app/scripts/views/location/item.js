@@ -10,7 +10,7 @@ function(
   'use strict';
   var LocationItem = Backbone.View.extend({
     tagName: 'li',
-    className: 'location-item',
+    className: 'location-item touchable',
     template: app.fetchTemplate('location/item'),
 
     events: {

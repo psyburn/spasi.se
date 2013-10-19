@@ -4,13 +4,17 @@
     .row {
       height: 90px;
       text-align: center;
-      margin-top: 5px;
+      margin-top: 25px;
 
       >div {
         display: inline-block;
         height: 100%;
         width: 90px;
         margin: 2.5px;
+        border-radius: 5px;
+        padding: 5px 0 0 0;
+        border: 1px solid #777;
+        font-size: 14px;
 
         background-repeat: no-repeat;
         background-size: 50%;
@@ -59,7 +63,7 @@
   .time-chooser {
     // display: none;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
     .time-toggle {
       padding: 10px;
       &:after {
@@ -76,6 +80,16 @@
     .set-time {
       height: 0;
       overflow: hidden;
+
+      input {
+        width: 80%;
+        margin: auto;
+      }
+
+      .day {
+        margin: 20px auto;
+        width: 70%;
+      }
     }
     &.expanded {
       .set-time {
@@ -86,6 +100,8 @@
 
   .filter-btn {
     margin-top: 20px;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(34, 25, 25, 0.4);
+    box-shadow: 0px 1px 2px 0px rgba(34, 25, 25, 0.4);
 
     &.active  {
       opacity: 0.8;

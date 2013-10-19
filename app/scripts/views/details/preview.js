@@ -18,6 +18,7 @@ define([
         this.model = model;
         this.$el.html(this.template(model.toJSON()));
         this.$el.slideDown();
+        this.$('.icon').attr('class', 'icon cat-' + model.get('category'));
         return this;
       },
 
