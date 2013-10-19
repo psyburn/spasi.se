@@ -41,6 +41,10 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            },
+            app: {
+              files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+              tasks: ['sass']
             }
         },
         autoshot: {
@@ -145,6 +149,19 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+
+      sass: {
+        options: {
+          'debug-info': false,
+          compass: true
+        },
+        deploy: {
+          files: {
+            'app/styles/sassGenerated.css': 'app/styles/scss/main.scss'
+          }
+        }
+      },
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
