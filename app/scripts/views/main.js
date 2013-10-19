@@ -37,6 +37,10 @@ define([
         this.mapsView = new MapsView();
         this.$('.map-container').html(this.mapsView.render().el);
         return this;
+      },
+
+      showPreviewCard: function(model) {
+        this.overlayView.showPreviewCard(model);
       }
 
     });

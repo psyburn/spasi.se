@@ -1,11 +1,13 @@
 define([
     'app',
     'views/location/list',
-    'views/search/list'
+    'views/search/list',
+    'views/details/preview'
   ], function(
     app,
     LocationList,
-    SearchList
+    SearchList,
+    DetailsPreview
   ) {
     'use strict';
 
@@ -21,9 +23,20 @@ define([
         'click .location-clear': 'onLocationClearClick'
       },
 
-    render: function() {
+      render: function() {
+        this.initDetailsPreviewCard();
+        var me = this;
         this.$el.html(this.template());
         return this;
+      },
+
+      initDetailsPreviewCard: function() {
+        this.detailsPreview =  new DetailsPreview();
+      },
+
+      showPreviewCard: function(model) {
+        console.log(model)
+        this.detailsPreview.render(model);
       },
 
       onListToggle: function() {

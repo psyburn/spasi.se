@@ -23,8 +23,15 @@ function(
       'filter': 'filter'
     },
 
+    initialize: function() {
+      var me = this;
+      Backbone.on('map:marker:click', function(model) {
+        me.mainView.showPreviewCard(model);
+      });
+    },
+
+
     index: function() {
-      console.log('home!');
       this.mainView = new MainView();
       $('#main-content').html(this.mainView.render().el);
     },
