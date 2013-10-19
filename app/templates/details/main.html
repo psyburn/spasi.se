@@ -1,13 +1,13 @@
-<div class="title"><%= name %></div>
+<div class="title"><%= item.name %></div>
 <div class="m-scooch m-fluid m-scooch-photos gallery">
   <!-- the slider -->
   <div class="m-scooch-inner">
     <!-- the items -->
     <div class="m-item m-active">
-      <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=300x200&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= location.latitude %>,<%= location.longitude %>&sensor=false">
+      <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=15&size=300x200&maptype=roadmap&markers=color:blue%7Clabel:S%7C<%= item.location.latitude %>,<%= item.location.longitude %>&sensor=false">
     </div>
     <div class="m-item">
-      <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=<%= location.latitude %>,<%= location.longitude %>&fov=90&heading=235&pitch=10&sensor=false">
+      <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=<%= item.location.latitude %>,<%= item.location.longitude %>&fov=90&heading=235&pitch=10&sensor=false">
     </div>
   </div>
   <!--div class="m-scooch-controls m-scooch-bulleted">
@@ -15,6 +15,62 @@
     <a href="javascript: void(0)" data-slide="2">2</a>
   </div-->
 </div>
-<div class="description">
-  <%= description %>
-</div>
+
+<% if (item.description) { %>
+  <div class="description">
+    <div class="label"> Opis objekta </div>
+    <div class="content"> <%= item.description %> </div>
+  </div>
+<% } %>
+
+<% if (item.phone) { %>
+  <div class="phone">
+    <div class="label"> Broj telefona </div>
+    <div class="content"> <%= item.phone %> </div>
+  </div>
+<% } %>
+
+<% if (item.address) { %>
+  <div class="address">
+    <div class="label"> Adresa </div>
+    <div class="content"> <%= item.address %> </div>
+  </div>
+<% } %>
+
+<% if (item.working_hours) { %>
+  <div class="working-hours">
+    <div class="label"> Radno vrijeme </div>
+    <div class="content">
+      <table class="pure-table">
+        <tr class="days">
+          <th>Pon</th>
+          <td> <%= item.working_hours.start[0] < 25 ? item.working_hours.start[0] + 'h - ' + item.working_hours.end[0] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Uto</th>
+          <td> <%= item.working_hours.start[1] < 25 ? item.working_hours.start[1] + 'h - ' + item.working_hours.end[1] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Sri</th>
+          <td> <%= item.working_hours.start[2] < 25 ? item.working_hours.start[2] + 'h - ' + item.working_hours.end[2] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Čet</th>
+          <td> <%= item.working_hours.start[3] < 25 ? item.working_hours.start[3] + 'h - ' + item.working_hours.end[3] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Pet</th>
+          <td> <%= item.working_hours.start[4] < 25 ? item.working_hours.start[4] + 'h - ' + item.working_hours.end[4] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Sub</th>
+          <td> <%= item.working_hours.start[5] < 25 ? item.working_hours.start[5] + 'h - ' + item.working_hours.end[5] + 'h' : ' Ne radi' %> </td>
+        </tr>
+        <tr>
+          <th>Ned</th>
+          <td> <%= item.working_hours.start[6] < 25 ? item.working_hours.start[6] + 'h - ' + item.working_hours.end[6] + 'h' : ' Ne radi' %> </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% } %>
