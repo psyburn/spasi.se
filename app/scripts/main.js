@@ -3,6 +3,8 @@ require.config({
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
     underscore: '../bower_components/lodash/dist/lodash',
+
+    toucher: 'plugins/toucher',
   },
   shim: {
     backbone: {
@@ -13,7 +15,9 @@ require.config({
       deps: ['backbone']
     },
     'Points': {},
-    'scooch': {}
+    'scooch': {
+      deps: ['jquery']
+    }
   }
 });
 
@@ -26,14 +30,16 @@ require([
   'collections/places',
 
   //plugins
+  'toucher',
   'backbone-parse',
   'Points',
-  'scooch'
+  'scooch',
 ], function(
     app,
     MainRouter,
     LocationsCollection,
-    PlacesCollection
+    PlacesCollection,
+    Toucher
   ) {
     'use strict';
     // use app here
@@ -67,7 +73,7 @@ require([
       },
       workingHours: false
     };
-
+    Toucher.bind('.touchable');
     Backbone.history.start({
       pushState: false,
       root: app.root

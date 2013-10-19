@@ -56,6 +56,10 @@
         background-size: 60%;
         background-repeat: no-repeat;
         background-position: center center;
+
+        &.active {
+          opacity: 0.8;
+        }
       }
 
       &.searching {
@@ -90,6 +94,10 @@
         background-size: 60%;
         background-repeat: no-repeat;
         background-position: center center;
+
+        &.active {
+          opacity: 0.8;
+        }
       }
 
       &.list {
