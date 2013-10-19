@@ -1,14 +1,5 @@
-define([
-  'app',
-  'backbone',
-  'jquery',
-  'underscore'
-], function(
-  app,
-  Backbone,
-  $,
-  _
-) {
+define(['app'], function(app) {
+
   var MapView = Backbone.View.extend({
     className: 'map-view',
     map: null,

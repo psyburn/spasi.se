@@ -19,7 +19,7 @@ define([
 
     _.extend(app, {
       fetchTemplate: function(path) {
-        var fullPath = 'app/templates/' + path + '.html';
+        var fullPath = 'templates/' + path + '.html';
         if (!JST[fullPath]) {
           $.ajax({
             url: app.root + fullPath,

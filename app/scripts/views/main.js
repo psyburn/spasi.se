@@ -9,27 +9,27 @@ define([
     MapsView,
     MainOverlayView
   ) {
-  "use strict";
+    'use strict';
 
     var CompositeView = Backbone.View.extend({
-    className: 'composite-view',
-    template: app.fetchTemplate('main'),
+      className: 'composite-view',
+      template: app.fetchTemplate('main'),
 
-    mapsView: null,
-    overlayView: null,
+      mapsView: null,
+      overlayView: null,
 
-    render: function() {
-      this.$el.html(this.template());
+      render: function() {
+        this.$el.html(this.template());
 
-      this.overlayView = new MainOverlayView();
-      this.$('.overlay-container').html(this.overlayView.render().el);
+        this.overlayView = new MainOverlayView();
+        this.$('.overlay-container').html(this.overlayView.render().el);
 
-      this.mapsView = new MapsView();
-      this.$('.map-container').html(this.mapsView.render().el);
-      return this;
-    }
+        this.mapsView = new MapsView();
+        this.$('.map-container').html(this.mapsView.render().el);
+        return this;
+      }
 
+    });
+
+    return CompositeView;
   });
-
-  return CompositeView;
-});

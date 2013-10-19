@@ -1,28 +1,28 @@
 define([
-    'app',
-
-    'views/map'
+    'app'
   ], function(
-    app,
-
-    MapsView
+    app
   ) {
-  "use strict";
+    'use strict';
 
-  var MainOverlayView = new Backbone.View.extend({
-    className: 'main-overlay-view',
-    template: app.fetchTemplate('main-overlay'),
+    var MainOverlayView = Backbone.View.extend({
+      className: 'main-overlay-view',
+      template: app.fetchTemplate('main-overlay'),
 
-    events: {
-      ''
-    }
+      events: {
+        'pointerend .list-toggle': 'onListToggle'
+      },
 
-    render: function() {
-      this.$el.html(this.template());
-      return this;
-    }
+      render: function() {
+        this.$el.html(this.template());
+        return this;
+      },
 
+      onListToggle: function() {
+
+      }
+
+    });
+
+    return MainOverlayView;
   });
-
-  return MainOverlayView;
-});
