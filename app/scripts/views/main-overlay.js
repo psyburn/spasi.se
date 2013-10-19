@@ -63,8 +63,10 @@ define([
             collection: app.collections.locations
           });
           app.setActiveView(locationList);
-          this.listenTo(locationList, 'click:item', function() {
-            console.log('clicked on location');
+          this.listenTo(locationList, 'click:item', function(model) {
+            var view = new DetailView({model: model});
+            app.setActiveView(view);
+            this.$('.footer').removeClass('list');
           });
           locationList.addAll();
         }
