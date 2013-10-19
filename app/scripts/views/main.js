@@ -37,7 +37,7 @@ define([
           me.trigger('search:focus');
         });
         this.overlayView.on('place:set', function() {
-          me.navigate('', false);
+          me.trigger('place:set');
         });
 
         this.mapsView = new MapsView();

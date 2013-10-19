@@ -12,5 +12,10 @@ ul {
   li {
     padding: 10px;
     border-bottom: 1px solid #aaa;
+    font-size: 20px;
+
+    &.search-item {
+      text-overflow: ellipsis;
+    }
   }
 }
