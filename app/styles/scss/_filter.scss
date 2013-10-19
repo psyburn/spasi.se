@@ -59,6 +59,7 @@
   .time-chooser {
     // display: none;
     text-align: center;
+    margin-top: 10px;
     .time-toggle {
       padding: 10px;
       &:after {
@@ -72,13 +73,13 @@
         background-position: 50% 7px;
       }
     }
-    .time-expansion {
-      max-height: 0;
-      @include transition(max-height 0.3s);
+    .set-time {
+      height: 0;
+      overflow: hidden;
     }
     &.expanded {
-      .time-expansion {
-        max-height: 100px;
+      .set-time {
+        height: auto;
       }
     }
   }

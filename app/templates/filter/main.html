@@ -10,15 +10,21 @@
     <div class="emergency" data-type="emergency">Hitna</div>
   </div>
 </div>
-<div class="time-chooser">
+<div class="time-chooser expanded">
   <div class="time-toggle"> Vrijeme </div>
-  <div class="time-expansion">
-    <div class="no-time"></div>
-    <div class="set-time">
-      <input type="text" class="time-from" placeholder="Od">
-      <input type="text" class="time-to" placeholder="Do">
-      <input type="text" class="day" placeholder="Na dan">
-    </div>
+  <div class="no-time"></div>
+  <div class="set-time">
+    <form class="pure-form pure-g">
+      <div class="pure-u-1-2">
+        <input type="text" class="pure-input-1 time-from" placeholder="Od">
+      </div>
+      <div class="pure-u-1-2">
+        <input type="text" class="pure-input-1 time-to" placeholder="Do">
+      </div>
+      <div class="pure-u-1">
+        <input type="text" class="pure-input-1 day" placeholder="Na dan">
+      </div>
+    </form>
   </div>
 </div>
 <div class="wrong-holder"></div>
