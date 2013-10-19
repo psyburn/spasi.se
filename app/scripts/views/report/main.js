@@ -19,7 +19,7 @@ define([
 
     onButtonSendClick: function() {
       var text = this.$('.text-report').html();
-      console.log(text);
+      this.trigger('report:add', this.model, text);
     }
 
   });

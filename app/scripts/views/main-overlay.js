@@ -72,6 +72,7 @@ define([
             me.$('.footer').removeClass('list');
           });
           locationList.addAll();
+          locationList.addReport();
         }
       },
 
