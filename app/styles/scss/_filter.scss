@@ -86,6 +86,10 @@
 
   .filter-btn {
     margin-top: 20px;
+
+    &.active  {
+      opacity: 0.8;
+    }
   }
 
 }
