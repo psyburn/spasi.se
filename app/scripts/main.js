@@ -22,9 +22,6 @@ require.config({
 });
 
 require(['app',
-  'jquery',
-  'backbone',
-  'underscore',
   'routers/main',
 
   //plugins
@@ -33,19 +30,21 @@ require(['app',
   'Points'
   ], function (
     app,
-    $,
-    _,
-    Backbone,
     MainRouter
   ) {
     'use strict';
     // use app here
 
+<<<<<<< HEAD
     console.log(app);
   });
 
   // Localize or create a new JavaScript Template object.
   var JST = window.JST = window.JST || {};
+=======
+  console.log(app);
+  window.app = app;
+>>>>>>> c815ded9274a4eab1006f90bd1c55985dd0d39d2
 
   new MainRouter();
 
