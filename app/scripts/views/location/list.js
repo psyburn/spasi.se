@@ -31,7 +31,7 @@ function(
 
     addReport: function() {
       this.$el.after(this.report());
-      this.$('.report').click(function() {
+      $('.report').click(function() {
         Backbone.trigger('report', null);
       });
     }

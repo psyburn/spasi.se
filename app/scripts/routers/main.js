@@ -4,7 +4,8 @@ define([
 
   'views/main',
   'views/map',
-  'views/filter/main'
+  'views/filter/main',
+  'views/report/main'
 ],
 
 function(
@@ -13,7 +14,8 @@ function(
 
     MainView,
     MapView,
-    FilterView
+    FilterView,
+    ReportView
   ) {
   'use strict';
   var Router = Backbone.Router.extend({
@@ -52,8 +54,18 @@ function(
       Backbone.on('map:marker:click', function(model) {
         me.mainView.showPreviewCard(model);
       });
-      Backbone.on('report', function() {
-
+      $('.footer').removeClass('list');
+      Backbone.on('report', function(model) {
+        me.navigate('report', false);
+        var report = new ReportView(model);
+        app.setActiveView(report);
+        report.on('report:add', function(model, text) {
+          app.collections.reports.add({
+            model: model,
+            text: text,
+            date: new Date()
+          });
+        });
       });
     },
 

@@ -15,6 +15,12 @@ input, textarea {
   font-weight: 100;
 }
 
+.report {
+  padding: 10px;
+  text-decoration: underline;
+  text-align: center;
+}
+
 #card-preview {
   position: absolute;
   bottom: 0;
@@ -114,6 +120,20 @@ input, textarea {
 
   &.visible {
     z-index: 3;
+  }
+}
+
+.report-view {
+  text-align: center;
+  padding: 15px;
+
+  .text-report {
+    width: 90%;
+    height: 100px;
+  }
+
+  .btn-send {
+    margin: 10px;
   }
 }
 

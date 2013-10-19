@@ -10,7 +10,7 @@ define([
     template: app.fetchTemplate('details/main'),
 
     events: {
-      'click report': 'onReportClick'
+      'click .report': 'onReportClick'
     },
 
     render: function() {
