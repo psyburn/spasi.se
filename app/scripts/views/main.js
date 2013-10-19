@@ -27,6 +27,12 @@ define([
         this.overlayView.on('map:search', function(query) {
           me.mapsView.searchPlaces(query);
         });
+        this.overlayView.on('map:position:set', function(position) {
+          me.mapsView.setPosition(position.lat, position.lng);
+        });
+        this.overlayView.on('map:position:reset', function(position) {
+          me.mapsView.showCurrentLocation();
+        });
 
         this.mapsView = new MapsView();
         this.$('.map-container').html(this.mapsView.render().el);
