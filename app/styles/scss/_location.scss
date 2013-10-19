@@ -51,6 +51,10 @@
       .filter-btn {
         @extend .card;
         width: 40px;
+        background-image: url(../../images/filter-icon.png);
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center center;
       }
 
       &.searching {
