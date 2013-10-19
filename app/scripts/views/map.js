@@ -57,17 +57,21 @@ define([
       this.center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       this.map.panTo(this.center);
       this.addMarker(this.center);
-      this.performRadarSearch();
+      this.searchPlaces('test');
     },
 
-    performRadarSearch: function() {
+    searchPlaces: function(keyword) {
+      this.performRadarSearch(keyword);
+    },
+
+    performRadarSearch: function(keyword) {
       var me = this;
       var radius = 2000;
 
       this.places.radarSearch({
         location: this.center,
         radius: radius,
-        types: ['cafe', 'restaurant']
+        keyword: keyword
       }, function(results, status) {
         me.onPlacesSearchResults.call(me, results, status);
       });
@@ -81,8 +85,14 @@ define([
     },
 
     refreshLocations: function() {
+      this.deleteMarkers();
       app.locations.forEach(function(location) {
+        this.displayLocation(location);
       }, this);
+    },
+
+    displayLocation: function(location) {
+
     },
 
     refreshPlaces: function(results) {
