@@ -10,7 +10,7 @@ define([
       url: 'mock/data.json',
 
       initialize: function() {
-        Backbone.on('change:pos', this.onPositionChange, this);
+        Backbone.on('map:bounds:change', this.onPositionChange, this);
         Backbone.on('filter:change', this.onFilterChange, this);
       },
 
@@ -38,11 +38,11 @@ define([
               '$box': [{
                 '__type': 'GeoPoint',
                 'latitude': app.filter.location.sw.lat,
-                'longitude': app.filter.location.sw.lon
+                'longitude': app.filter.location.sw.lng
               }, {
                 '__type': 'GeoPoint',
                 'latitude': app.filter.location.ne.lat,
-                'longitude': app.filter.location.ne.lon
+                'longitude': app.filter.location.ne.lng
               }]
             }
           }
