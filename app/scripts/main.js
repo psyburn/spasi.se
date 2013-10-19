@@ -16,10 +16,6 @@ require(['app', 'jquery', 'backbone'], function (app, $, Backbone) {
   'use strict';
   // use app here
 
-  app = {
-    root: '/'
-  };
-
   console.log(app);
 
   Backbone.history.start({

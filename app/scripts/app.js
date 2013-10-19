@@ -1,6 +1,10 @@
 /*global define */
 define([], function () {
-    'use strict';
+  'use strict';
 
-    return '\'Allo \'Allo!';
+  var app = {
+    root: '/'
+  };
+
+  return app;
 });

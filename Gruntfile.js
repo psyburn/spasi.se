@@ -124,14 +124,6 @@ module.exports = function (grunt) {
                 'test/spec/{,*/}*.js'
             ]
         },
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://localhost:<%= connect.options.port %>/index.html']
-                }
-            }
-        },
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
