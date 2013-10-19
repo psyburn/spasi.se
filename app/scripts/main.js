@@ -39,7 +39,7 @@ require([
     // Localize or create a new JavaScript Template object.
     var JST = window.JST = window.JST || {};
 
-    new MainRouter();
+    app.router = new MainRouter();
     window.app = app;
 
     app.collections = {
@@ -47,9 +47,24 @@ require([
       places: new PlacesCollection()
     };
 
+    app.filter = {
+      categories: [],
+      location: {
+        sw: {
+          lat: 0,
+          lon: 0
+        },
+        ne: {
+          lat: 0,
+          lon: 0
+        }
+      },
+      workingHours: false
+    };
+
     Backbone.history.start({
       pushState: false,
       root: app.root
     });
 
-});
+  });

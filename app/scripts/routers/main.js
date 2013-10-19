@@ -36,7 +36,7 @@ function(
 
     filter: function() {
       this.filterView = new FilterView();
-      $('body').html(this.filterView.render().$el);
+      app.setActiveView(this.filterView);
     }
 
   });
