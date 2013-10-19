@@ -36,6 +36,9 @@ function(
       this.mainView.on('search:focus', function() {
         me.navigate('search', false);
       });
+      this.mainView.on('place:set', function() {
+        me.navigate('', false);
+      });
       $('#main-content').html(this.mainView.render().el);
     },
 

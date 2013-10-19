@@ -25,6 +25,12 @@ define([
         'click .location-clear': 'onLocationClearClick'
       },
 
+      original: null,
+
+      initialize: function() {
+        Backbone.on('search:reset', this.resetSearch, this);
+      },
+
       render: function() {
         this.initDetailsPreviewCard();
         this.$el.html(this.template());
@@ -76,8 +82,9 @@ define([
         this.searchList.on('place:set', this.setPlace, this);
         app.setActiveView(this.searchList);
         this.$('.header').addClass('searching');
-        app.collections.places.reset();
         this.trigger('search:focus');
+
+        this.original = this.$('.search-field').val();
       },
 
       onSearchKeyUp: function(e) {
@@ -117,6 +124,11 @@ define([
           app.collections.places.reset([]);
           this.trigger('map:position:reset');
         }
+      },
+
+      resetSearch: function() {
+        this.$('.search-field').val(this.original).blur();
+        this.$('.searching').removeClass('searching');
       }
 
     });
