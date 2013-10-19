@@ -9,7 +9,9 @@ define([
     className: 'details-view',
     template: app.fetchTemplate('details/main'),
 
-    events: {},
+    events: {
+      'click report': 'onReportClick'
+    },
 
     render: function() {
       this.model.set('phone', '123891283123');
@@ -24,6 +26,10 @@ define([
       }));
       this.$('.gallery').scooch();
       return this;
+    },
+
+    onReportClick: function() {
+      Backbone.trigger('report', this.model);
     }
 
   });

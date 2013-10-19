@@ -21,6 +21,7 @@ function(
       'filter': 'filter',
       'search': 'search',
       'details': 'details',
+      'report': 'report',
       '': 'index'
     },
 
@@ -51,6 +52,9 @@ function(
       Backbone.on('map:marker:click', function(model) {
         me.mainView.showPreviewCard(model);
       });
+      Backbone.on('report', function() {
+
+      });
     },
 
     index: function() {
@@ -64,6 +68,10 @@ function(
     },
 
     details: function() {
+      this.navigate('', true);
+    },
+
+    report: function() {
       this.navigate('', true);
     },
 

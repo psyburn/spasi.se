@@ -19,6 +19,7 @@ function(
     className: 'location-list',
     singleItem: Item,
     empty: app.fetchTemplate('location/empty'),
+    report: app.fetchTemplate('location/report'),
 
     render: function() {
       return this;
@@ -26,6 +27,13 @@ function(
 
     emptyView: function() {
       this.$el.html(this.empty());
+    },
+
+    addReport: function() {
+      this.$el.after(this.report());
+      this.$('.report').click(function() {
+        Backbone.trigger('report', null);
+      });
     }
   });
 
