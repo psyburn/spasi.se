@@ -87,6 +87,14 @@
         background-repeat: no-repeat;
         background-position: center center;
       }
+
+      &.list {
+        position: absolute;
+        z-index: 4;
+        .list-toggle {
+          background-image: url(../../images/map.png);
+        }
+      }
     }
   }
 
