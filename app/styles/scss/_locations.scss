@@ -1,0 +1,63 @@
+.location-list {
+  list-style: none;
+}
+.location-item {
+  position: relative;
+  border: none;
+  margin: 5px;
+  background-color: #eee;
+  min-height: 50px;
+  padding-left: 60px;
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    background-size: 32px 32px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    margin: -10px 0 -10px -60px;
+  }
+
+  &.cat-hospital {
+    .icon {
+      background-color: #FA8E7D;
+      background-image: url(../../images/marker_hospital.png);
+    }
+  }
+
+  &.cat-center {
+    .icon {
+      background-color: #B8D9E1;
+      background-image: url(../../images/marker_center.png);
+    }
+  }
+
+  &.cat-defibrilator {
+    .icon {
+      background-color: #FAFAEF;
+      background-image: url(../../images/marker_defibrilator.png);
+    }
+  }
+
+  &.cat-office {
+    .icon {
+      background-color: #60B1DE;
+      background-image: url(../../images/marker_office.png);
+    }
+  }
+
+  &.cat-emergency {
+    .icon {
+      background-color: #F0D44F;
+      background-image: url(../../images/marker_emergency.png);
+    }
+  }
+
+  &.cat-pharmacy {
+    .icon {
+      background-color: #A7CA5E;
+      background-image: url(../../images/marker_pharmacy.png);
+    }
+  }
+}

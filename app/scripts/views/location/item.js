@@ -9,6 +9,7 @@ function(
   ) {
   'use strict';
   var LocationItem = Backbone.View.extend({
+    tagName: 'li',
     className: 'location-item',
     template: app.fetchTemplate('location/item'),
 
@@ -21,6 +22,7 @@ function(
 
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
+      this.$el.addClass('cat-' + this.model.get('category'));
       return this;
     },
 

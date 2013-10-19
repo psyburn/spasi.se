@@ -40,14 +40,21 @@ define([
       },
 
       onListToggle: function() {
-        var locationList = new LocationList({
-          collection: app.collections.locations
-        });
-        app.setActiveView(locationList);
-        this.listenTo(locationList, 'click:item', function() {
-          console.log('clicked on location');
-        });
-        locationList.addAll();
+        var overlayFooter = this.$('.footer');
+        if (overlayFooter.hasClass('list')) {
+          overlayFooter.removeClass('list');
+          app.hideActiveView();
+        } else {
+          overlayFooter.addClass('list');
+          var locationList = new LocationList({
+            collection: app.collections.locations
+          });
+          app.setActiveView(locationList);
+          this.listenTo(locationList, 'click:item', function() {
+            console.log('clicked on location');
+          });
+          locationList.addAll();
+        }
       },
 
       onSearchFieldFocus: function() {
