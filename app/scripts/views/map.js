@@ -16,6 +16,7 @@ define([
     initialize: function() {
       app.loadGmaps(this, this.initMap);
       this.listenTo(app.collections.locations, 'reset', this.refreshLocations, this);
+      app.mapView = this;
     },
 
     render: function() {
@@ -101,7 +102,18 @@ define([
     },
 
     searchPlaces: function(keyword) {
-      this.performRadarSearch(keyword);
+      this.performNearbySearch(keyword);
+    },
+
+    performNearbySearch: function(keyword) {
+      var me = this;
+      this.places.nearbySearch({
+        location: this.center,
+        radius: 2000,
+        keyword: keyword
+      }, function(result, status) {
+        me.onPlacesSearchResults.call(me, result, status);
+      });
     },
 
     performRadarSearch: function(keyword) {
@@ -154,7 +166,7 @@ define([
       var places = [];
       for(var i=0; i<results.length; i++) {
         places.push({
-          title: results[i].html_attributions.length > 0 ? results[i].html_attributions[0] : 'Untitled',
+          title: results[i].name ? results[i].name : 'Untitled',
           location: {
             lat: results[i].geometry.location.lb,
             lng: results[i].geometry.location.mb
