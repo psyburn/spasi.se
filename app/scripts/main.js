@@ -22,9 +22,6 @@ require.config({
 });
 
 require(['app',
-  'jquery',
-  'backbone',
-  'underscore',
   'routers/main',
 
   //plugins
@@ -33,9 +30,6 @@ require(['app',
   'Points'
   ], function (
     app,
-    $,
-    _,
-    Backbone,
     MainRouter
   ) {
   'use strict';
@@ -43,26 +37,6 @@ require(['app',
 
   console.log(app);
   window.app = app;
-
-  _.extend(app, {
-    fetchTemplate: function(path) {
-      var fullPath = 'app/templates/' + path + '.html';
-      if (!JST[fullPath]) {
-        $.ajax({
-          url: app.root + fullPath,
-          async: false,
-          success: function(contents) {
-            JST[fullPath] = _.template(contents);
-          }
-        });
-      }
-
-      return JST[fullPath];
-    }
-  });
-
-  // Localize or create a new JavaScript Template object.
-  var JST = window.JST = window.JST || {};
 
   new MainRouter();
 
