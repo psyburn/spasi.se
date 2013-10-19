@@ -39,7 +39,7 @@ require([
     // Localize or create a new JavaScript Template object.
     var JST = window.JST = window.JST || {};
 
-    new MainRouter();
+    app.router = new MainRouter();
     window.app = app;
 
     app.collections = {
