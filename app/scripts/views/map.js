@@ -23,7 +23,7 @@ define([
     },
 
     initMap: function() {
-      console.log('Init map');
+      var me = this;
       this.map = new google.maps.Map(this.el, {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         panControl: false,
@@ -38,6 +38,20 @@ define([
         }
       });
       app.map = this.map;
+
+      google.maps.event.addListener(this.map, 'bounds_changed', function() {
+        Backbone.trigger('map:bounds:change', {
+          ne: {
+            lat: me.map.getBounds().getNorthEast().lat(),
+            lng: me.map.getBounds().getNorthEast().lng(),
+          },
+          sw: {
+            lat: me.map.getBounds().getSouthWest().lat(),
+            lng: me.map.getBounds().getSouthWest().lng(),
+          }
+        });
+      });
+
       this.places = new google.maps.places.PlacesService(this.map);
       this.showCurrentLocation();
       app.collections.locations.loadMock();
@@ -58,18 +72,6 @@ define([
           lng: lng
         }
       };
-      // this.trigger('map:position:change', {
-      //   lat: this.center.lat(),
-      //   lng: this.center.lng(),
-      //   ne: {
-      //     lat: this.map.getBound().getNorthEast().lat(),
-      //     lng: this.map.getBound().getNorthEast().lng(),
-      //   },
-      //   sw: {
-      //     lat: this.map.getBound().getSouthWest().lat(),
-      //     lng: this.map.getBound().getSouthWest().lng(),
-      //   }
-      // });
     },
 
     showCurrentLocation: function() {
