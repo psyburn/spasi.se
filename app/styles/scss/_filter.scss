@@ -63,7 +63,9 @@
   .time-chooser {
     // display: none;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px 15px auto 15px;
+    height: auto;
+
     .time-toggle {
       padding: 10px;
       &:after {
@@ -82,13 +84,24 @@
       overflow: hidden;
 
       input {
-        width: 80%;
-        margin: auto;
+        width: 60%;
+      }
+
+      .time-from {
+        margin: auto 5px auto auto;
+      }
+
+      .time-to {
+        margin: auto auto auto 5px;
       }
 
       .day {
         margin: 20px auto;
         width: 70%;
+
+        height: 34px;
+        overflow: hidden;
+        border: 1px solid #ccc;
       }
     }
     &.expanded {

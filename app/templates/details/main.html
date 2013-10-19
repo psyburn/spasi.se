@@ -17,28 +17,28 @@
 </div>
 
 <% if (item.description) { %>
-  <div class="description">
+  <div class="description card">
     <div class="label"> Opis objekta </div>
     <div class="content"> <%= item.description %> </div>
   </div>
 <% } %>
 
 <% if (item.phone) { %>
-  <div class="phone">
+  <div class="phone card">
     <div class="label"> Broj telefona </div>
     <div class="content"> <%= item.phone %> </div>
   </div>
 <% } %>
 
 <% if (item.address) { %>
-  <div class="address">
+  <div class="address card">
     <div class="label"> Adresa </div>
     <div class="content"> <%= item.address %> </div>
   </div>
 <% } %>
 
 <% if (item.working_hours) { %>
-  <div class="working-hours">
+  <div class="working-hours card">
     <div class="label"> Radno vrijeme </div>
     <div class="content">
       <table class="pure-table">
