@@ -24,7 +24,7 @@ define(['app'], function(app) {
         scaleControl: false,
         streetViewControl: false,
         overviewMapControl: false,
-        zoom: 8,
+        zoom: 16,
         zoomControl: false,
         zoomControlOptions: {
           style: google.maps.ZoomControlStyle.SMALL
@@ -36,7 +36,19 @@ define(['app'], function(app) {
     },
 
     showCurrentLocation: function() {
-      this.center = new google.maps.LatLng(-34.397, 150.644);
+      var me = this;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos) {
+          me.onGetCurrentLocation.call(me, pos);
+        });
+      } else {
+        console.log('Geo Location is not supported');
+      }
+    },
+
+    onGetCurrentLocation: function(position) {
+      console.log(position);
+      this.center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       this.map.panTo(this.center);
     },
 
