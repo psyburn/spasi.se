@@ -17,11 +17,17 @@ define([
       render: function(model) {
         this.model = model;
         this.$el.html(this.template(model.toJSON()));
+        this.$el.slideDown();
         return this;
       },
 
       onClick: function() {
         this.trigger('click', this.model);
+        this.hide();
+      },
+
+      hide: function() {
+        this.$el.hide();
       }
 
     });
