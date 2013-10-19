@@ -12,11 +12,23 @@ require.config({
   }
 });
 
-require(['app', 'jquery', 'backbone'], function (app, $, Backbone) {
+require(['app',
+  'jquery',
+  'backbone',
+  'routers/main'
+  ], function (
+    app,
+    $,
+    Backbone,
+    MainRouter
+  ) {
   'use strict';
   // use app here
 
   console.log(app);
+
+  new MainRouter();
+
 
   Backbone.history.start({
       pushState: false,
