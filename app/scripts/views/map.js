@@ -1,6 +1,6 @@
 define(['app'], function(app) {
 
-  var MapView = new Backbone.View.extend({
+  var MapView = Backbone.View.extend({
     className: 'map-view',
     map: null,
     places: null,

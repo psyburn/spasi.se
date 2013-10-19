@@ -2,6 +2,7 @@ define([
   'app',
   'backbone',
 
+  'views/main',
   'views/map'
 ],
 
@@ -9,6 +10,7 @@ function(
     app,
     Backbone,
 
+    MainView,
     MapView
   ) {
   'use strict';
@@ -20,6 +22,8 @@ function(
 
     index: function() {
       console.log('home!');
+      this.mainView = new MainView();
+      $('body').html(this.mainView.render().el);
     },
 
     map: function() {

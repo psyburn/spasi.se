@@ -10,4 +10,4 @@ define([
     });
 
     return LocationsCollection;
-});
+  });
