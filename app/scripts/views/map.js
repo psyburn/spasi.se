@@ -33,7 +33,7 @@ define([
         scaleControl: true,
         streetViewControl: true,
         overviewMapControl: true,
-        zoom: 18,
+        zoom: 8,
         zoomControl: true,
         zoomControlOptions: {
           style: google.maps.ZoomControlStyle.SMALL
@@ -45,7 +45,7 @@ define([
     },
 
     showCurrentLocation: function() {
-      this.center = new google.maps.LatLng(-20, 20);
+      this.center = new google.maps.LatLng(-34.397, 150.644);
       this.map.panTo(this.center);
     },
 
