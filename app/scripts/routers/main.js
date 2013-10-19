@@ -31,7 +31,6 @@ function(
 
     map: function() {
       this.mapView = new MapView();
-      app.locations.fetch();
       $('body').html(this.mapView.render().$el);
     },
 
