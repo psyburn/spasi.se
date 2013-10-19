@@ -2,12 +2,17 @@ require.config({
   paths: {
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
-    underscore: '../bower_components/lodash/dist/lodash'
+    underscore: '../bower_components/lodash/dist/lodash',
+    backbonelist: 'plugins/backbone.list'
   },
   shim: {
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+    backbonelist: {
+      deps: ['underscore', 'jquery'],
+      exports: 'Backbone.List'
     }
   }
 });
@@ -15,7 +20,10 @@ require.config({
 require(['app',
   'jquery',
   'backbone',
-  'routers/main'
+  'routers/main',
+
+  //plugins
+  'backbonelist'
   ], function (
     app,
     $,
