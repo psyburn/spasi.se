@@ -150,11 +150,11 @@ define([
       var me = this;
       var latLng = new google.maps.LatLng(location.get('location').latitude, location.get('location').longitude);
       var marker = this.addMarker(latLng, {
-        url: 'images/marker_' + location.get('category') + '.png',
-        size: new google.maps.Size(30, 30),
+        url: 'images/markers/marker_' + location.get('category') + '.png',
+        size: new google.maps.Size(32, 46),
         origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(30, 30),
-        scaledSize: new google.maps.Size(30,30)
+        anchor: new google.maps.Point(16, 23),
+        scaledSize: new google.maps.Size(32,46)
       });
       marker.locationModel = location;
     },
