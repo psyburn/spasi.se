@@ -19,13 +19,13 @@ define(['app'], function(app) {
       console.log('Init map');
       this.map = new google.maps.Map(this.el, {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        panControl: true,
-        mapTypeControl: true,
-        scaleControl: true,
-        streetViewControl: true,
-        overviewMapControl: true,
+        panControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
         zoom: 8,
-        zoomControl: true,
+        zoomControl: false,
         zoomControlOptions: {
           style: google.maps.ZoomControlStyle.SMALL
         }
