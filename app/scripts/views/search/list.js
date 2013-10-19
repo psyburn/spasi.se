@@ -35,7 +35,11 @@ function(
         clearTimeout(this.timeout);
       }
       this.lastValue = query;
-      this.timeout = setTimeout($.proxy(this.updateAutocomplete, this), this.autocompleteTimeout);
+      if (query) {
+        this.timeout = setTimeout($.proxy(this.updateAutocomplete, this), this.autocompleteTimeout);
+      } else {
+        app.collections.places.reset();
+      }
     },
 
     enterPress: function() {
