@@ -84,7 +84,10 @@ define([
       for(var i=0; i<results.length; i++) {
         places.push({
           title: results[i].html_attributions.length > 0 ? results[i].html_attributions[0] : 'Untitled',
-          location: results[i].geometry.location
+          location: {
+            lat: results[i].geometry.location.lb,
+            lng: results[i].geometry.location.mb
+          }
         });
       }
       app.collections.places.reset(places);
