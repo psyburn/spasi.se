@@ -27,7 +27,7 @@ define([
 
       onListToggle: function() {
         var locationList = new LocationList({
-          collection: app.locations
+          collection: app.collections.locations
         });
         app.setActiveView(locationList);
         this.listenTo(locationList, 'click:item', function() {

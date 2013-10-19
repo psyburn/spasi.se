@@ -1,0 +1,59 @@
+.filter-view {
+  text-align: center;
+  .category-list {
+    .row {
+      height: 90px;
+      text-align: center;
+      margin-top: 5px;
+
+      >div {
+        display: inline-block;
+        height: 100%;
+        width: 90px;
+        border: 1px solid black;
+        margin: 2.5px;
+
+        background-repeat: no-repeat;
+        background-size: 50%;
+        background-position: center center;
+
+        &.hospital {
+          background-image: url(../../images/marker_hospital.png);
+        }
+
+        &.center {
+          background-image: url(../../images/marker_center.png);
+        }
+
+        &.defibrilator {
+          background-image: url(../../images/marker_defibrilator.png);
+        }
+
+        &.office {
+          background-image: url(../../images/marker_office.png);
+        }
+
+        &.emergency {
+          background-image: url(../../images/marker_emergency.png);
+        }
+
+
+        &.pharmacy {
+          background-image: url(../../images/marker_pharmacy.png);
+        }
+
+        &.selected {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .time-chooser {
+    display: none;
+    text-align: center;
+  }
+
+  .filter-btn {
+    margin-top: 20px;
+  }
+}
