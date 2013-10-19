@@ -12,12 +12,11 @@ define([
       template: app.fetchTemplate('main-overlay'),
 
       events: {
-        'pointerend .list-toggle': 'onListToggle'
+        'click .list-toggle': 'onListToggle'
       },
 
       render: function() {
         this.$el.html(this.template());
-        // this.onListToggle();
         return this;
       },
 
@@ -25,7 +24,7 @@ define([
         var locationList = new LocationList({
           collection: new Backbone.Collection({item: 1})
         });
-        this.$el.html(locationList.render().el);
+        app.setActiveView(locationList);
 
       }
 

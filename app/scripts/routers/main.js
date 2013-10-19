@@ -23,7 +23,7 @@ function(
     index: function() {
       console.log('home!');
       this.mainView = new MainView();
-      $('body').html(this.mainView.render().el);
+      $('#main-content').html(this.mainView.render().el);
     },
 
     map: function() {

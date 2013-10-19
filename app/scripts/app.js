@@ -33,6 +33,22 @@ define([
         return JST[fullPath];
       },
 
+      setActiveView: function(view) {
+        var oldView = this.currentView;
+
+        if (oldView && oldView.cleanup) {
+          //view cleanup custom events
+          oldView.cleanup();
+        }
+        var viewEl = view.render();
+        $('#secondary-content').html(viewEl.el);
+        //scroll to top on every screen change
+        setTimeout(function () {
+          window.scrollTo(0,1);
+        }, 0);
+        this.currentView = view;
+      },
+
       loadGmaps: function(context, callback) {
         if (!this.gmaps.loaded) {
           this.gmaps.loadContext = context;
